@@ -1,0 +1,48 @@
+# Adapted from the basic workflow
+
+name: Generate Schema Docs
+permissions:
+  contents: write # Permission to write (push) to repo contents
+
+on:
+  push:
+    branches: [ "main" ] # Job runs on push to main
+    paths:
+      - 'schema-draft.json' # Only run when the schema draft changed
+
+  workflow_dispatch:   # Allow manual re-run from Actions tab
+
+jobs:
+  # Just one job here
+  docs-gen: # Pulls repo contents, runs json schema docs generation, pushes new docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4 # Check out the repo
+      - uses: actions/setup-python@v5 # Set up python for running pip package
+        with:
+          python-version: 3.11
+
+      - name: Install pip dependencies # For doc generation package
+        run: |
+          python -m pip install --upgrade pip
+          pip install json-schema-for-humans
+
+      - name: Generate docs # Make docs directory if needed, then run doc generation command
+        run: |
+          mkdir -p docs
+          generate-schema-doc schema-draft.json ./docs/index.md --config-file ./schema_docs_config.yml
+      
+      - name: Configure git # Setup user info and origin url so push will succeed
+        run: |
+          git config --global user.name 'Actions: Docs Gen'
+          git config --global user.email 'actions-docs-gen@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Push changes
+        run: |
+          git add ./docs/*
+          git commit -m "Action: Auto-update schema docs"
+          git fetch origin ${{ github.ref }}
+          git push origin ${{ github.ref }}
+          

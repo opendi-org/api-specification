@@ -1,0 +1,155 @@
+# Test Data
+
+The following example data adheres to the OpenDI JSON Schema
+
+```json
+{
+    "$schema": "./schema-draft.json",
+    "uuid": "28eefdc9-d38c-458d-a0b1-cba3706a09e4",
+    "name": "Example/Test Model",
+    "summary": "An example CDM for testing/demonstrating the CDM JSON schema.",
+    "status": "Draft",
+    "version": "0.0.1",
+    "partialRetrieval": null,
+
+    "elements": [
+        {
+            "uuid": "16283e16-9c8e-4971-ad58-4d3b92066223",
+            "name": "An action",
+            "type": "Lever",
+            "evaluation": {
+                "defaultValue": 1
+            },
+            "diagram": {
+                "position": {
+                    "x": 10,
+                    "y": 10
+                },
+                "boundingBoxSize": {
+                    "width": 400,
+                    "height": 300
+                }
+            }
+        },
+        {
+            "uuid": "ea9ea804-2de2-46ea-b0eb-f08d7649c215",
+            "name": "Another action",
+            "type": "Lever",
+            "evaluation": {
+                "defaultValue": 0
+            },
+            "diagram": {
+                "position": {
+                    "x": 10,
+                    "y": 400
+                },
+                "boundingBoxSize": {
+                    "width": 400,
+                    "height": 300
+                }
+            },
+            "assets": ["082b9bf0-a61b-4a45-bea2-fd7c4c8f360e"]
+        },
+        {
+            "uuid": "6a6fa173-7bff-4913-9f5b-5da98075302e",
+            "name": "An outcome",
+            "type": "Outcome",
+            "evaluation": {
+                "defaultValue": null
+            },
+            "diagram": {
+                "position": {
+                    "x": 500,
+                    "y": 10
+                },
+                "boundingBoxSize": {
+                    "width": 400,
+                    "height": 300
+                }
+            }
+        },
+        {
+            "uuid": "42856efc-35f4-4772-9c5c-ad6c6ba8e419",
+            "name": "A constraint",
+            "type": "Custom",
+            "customType": "Constraint",
+            "evaluation": {
+                "valueExpression": "ea9ea804-2de2-46ea-b0eb-f08d7649c215 < 16283e16-9c8e-4971-ad58-4d3b92066223",
+                "defaultValue": false
+            },
+            "diagram": {
+                "position": {
+                    "x": 10,
+                    "y": 800
+                },
+                "boundingBoxSize": {
+                    "width": 400,
+                    "height": 300
+                }
+            }
+        },
+        {
+            "uuid": "0149ba61-d680-4700-a161-682a60e81fd7",
+            "name": "An eval-only example element",
+            "type": "Custom",
+            "customType": "Eval Only",
+            "evaluation": {
+                "defaultValue": null
+            }
+        },
+        {
+            "uuid": "c0d51c2e-3063-4637-8db7-c5d5f6779736",
+            "name": "A diagram-only example element",
+            "type": "Custom",
+            "customType": "Diagram Only",
+            "diagram": {
+                "position": {
+                    "x": 500,
+                    "y": 400
+                },
+                "boundingBoxSize": {
+                    "width": 400,
+                    "height": 300
+                }
+            }
+        }
+    ],
+
+    "dependencies": [
+        {
+            "uuid": "0bb28923-5ef4-483c-af32-1bea58732614",
+            "source": "16283e16-9c8e-4971-ad58-4d3b92066223",
+            "target": "6a6fa173-7bff-4913-9f5b-5da98075302e",
+            "assets": ["75e1974a-e5e4-4726-85b3-cb3d86b843be"]
+        },
+        {
+            "uuid": "d2d0e096-9d45-41e9-9a47-3a4791895fc0",
+            "source": "ea9ea804-2de2-46ea-b0eb-f08d7649c215",
+            "target": "6a6fa173-7bff-4913-9f5b-5da98075302e"
+        },
+        {
+            "uuid": "e3709be0-ea19-41d9-b7c4-7cc602117c27",
+            "source": "42856efc-35f4-4772-9c5c-ad6c6ba8e419",
+            "target": "ea9ea804-2de2-46ea-b0eb-f08d7649c215"
+        }
+    ],
+
+    "modelAssets": [
+        {
+            "uuid": "75e1974a-e5e4-4726-85b3-cb3d86b843be",
+            "name": "Test asset for dependency",
+            "assetData": {
+                "comment": "Not sure what goes in here yet!"
+            }
+        },
+        {
+            "uuid": "082b9bf0-a61b-4a45-bea2-fd7c4c8f360e",
+            "name": "Test asset for decision element",
+            "assetData": {
+                "comment": "Not sure what goes in here yet, either!"
+            }
+        }
+    ]
+    
+}
+```
