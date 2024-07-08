@@ -4,7 +4,7 @@
 
 Welcome! You're currently browsing source files for the OpenDI public website - JSON Schema.
 
-## Get started
+## Get started 
 
 If you're looking to explore the standards or learn more about the project, [start on the website.](https://opendi-org.github.io/landing-site/)  
 If you'd like to go to the JSON Schema website directly, use [this direct link](https://opendi-org.github.io/json-schema)
