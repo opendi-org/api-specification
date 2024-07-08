@@ -18,7 +18,7 @@ Want to engage in community discussion? Join the [OpenDI Discord server!](https:
 A good way to get familiar with the schema is to browse some test data. See `test-data.json`.  
 Ideally, clone the repo to a dev environment that has JSON Schema integration, like VS Code. See instructions below.
 
-Alternatively, there is static HTML documentation in `docs/schema_docs.html`.  
+Alternatively, browse the docs on the OpenDI website.  
 These docs pull information directly from the schema and presents it in a more readable format. 
 
 ## VS Code
