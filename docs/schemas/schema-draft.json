@@ -11,7 +11,7 @@
             "$ref": "#/$defs/baseAsset"
         },
         {
-            "title": "CDM Properties",
+            "title": "Causal Decision Model Properties",
             "properties": {
                 "status": {
                     "title": "Model Status",
@@ -61,12 +61,11 @@
                     }
                 }
 
-            }
+            },
+            "required": ["status", "partialRetrieval", "elements", "dependencies", "modelAssets"]
         }
 
     ],
-    "$comment": "Required: id -- Inherited from baseAsset",
-    "required": ["name", "summary", "status", "version", "partialRetrieval", "elements", "dependencies", "modelAssets"],
     "if": {
         "properties": {
             "status": {"const": "Custom"}

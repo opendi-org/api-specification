@@ -1,0 +1,16 @@
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "./schemas/schema-draft.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+# OpenDI JSON Schema
+
+The current working draft of the OpenDI JSON Schema.  
+The view below provides a more accessible browsing experience, but if you'd prefer to view the source, see the [source display](#source) below, or view the [original source](./schemas/schema-draft.json).
+
+## Schema Docs
+
+<JSONSchemaViewer schema={ Schema } />
+
+## Source
+
+<CodeBlock language="json" title="OpenDI JSON Schema -- Source">{JSON.stringify(Schema, null, 2)}</CodeBlock>
