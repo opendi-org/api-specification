@@ -1,15 +1,46 @@
 import CodeBlock from '@theme/CodeBlock';
-import Schema from "./schemas/schema-draft.json";
+import Schema from "./schemas/Causal-Decision-Model.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+export const resolverOptions = {
+    //Tell the JSON Schema Viewer how to dynamically import local-file schemas based on the relative $ref path given.
+    //See https://jy95.github.io/docusaurus-json-schema-plugin/docs/demo-viewer/refs/localFile 
+    resolvers: {
+        file: {
+            resolve: function anonymous(ref) {
+                return new Promise((resolve, reject) => {
+
+                    const schema_import_base = "@site/docs/schemas/"
+
+                    //Remove the relative file prefix and leading "/" from ref
+                    let adjusted_ref = ref.toString();
+                    while (adjusted_ref.charAt(0) == "." || adjusted_ref.charAt(0) == "/")
+                    {
+                        adjusted_ref = adjusted_ref.substring(1);
+                    }
+
+                    console.log(`${schema_import_base}${adjusted_ref}`);
+                    console.log(`@site/docs/schemas/${adjusted_ref}`);
+                    
+                    //Import ref relative to its actual location
+                    import (`@site/docs/schemas/${adjusted_ref}`)
+                        .then((result) => resolve(result.default))
+                        .catch((err) => reject(err))
+                })
+            }
+        },
+        jsonPointer: "#/definitions/user"
+    }
+}
 
 # OpenDI JSON Schema
 
 The current working draft of the OpenDI JSON Schema.  
-The view below provides a more accessible browsing experience, but if you'd prefer to view the source, see the [source display](#source) below, or view the [original source](./schemas/schema-draft.json).
+The view below provides a more accessible browsing experience, but if you'd prefer to view the source, see the [source display](#source) below, or view the [original source](./schemas/Causal-Decision-Model.json).
 
 ## Schema Docs
 
-<JSONSchemaViewer schema={ Schema } />
+<JSONSchemaViewer schema={ Schema } resolverOptions={resolverOptions} />
 
 ## Source
 
