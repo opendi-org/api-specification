@@ -16,7 +16,7 @@
         },
         "evaluatables": {
             "title": "Evaluatable Decision Models",
-            "description": "The evaluatable model (or set of model fragments) used for computing or simulating this CDM.",
+            "description": "List containing the evaluatable model (or set of model components) used for computing or simulating this CDM.",
             "type": "array",
             "items": {
                 "$ref": "./DI-Evaluatable.json"
@@ -32,7 +32,7 @@
         },
         "addons": {
             "title": "Addon Data",
-            "description": "Object containing data for various addons.",
+            "description": "Holds addon objects for storing data not specified in OpenDI standards.",
             "$ref": "./DI-Addons.json"
         }
     },

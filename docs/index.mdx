@@ -1,47 +1,22 @@
-import CodeBlock from '@theme/CodeBlock';
-import Schema from "./schemas/Causal-Decision-Model.json";
-import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+# OpenDI Refence Architecture -- API Specification
 
-export const resolverOptions = {
-    //Tell the JSON Schema Viewer how to dynamically import local-file schemas based on the relative $ref path given.
-    //See https://jy95.github.io/docusaurus-json-schema-plugin/docs/demo-viewer/refs/localFile 
-    resolvers: {
-        file: {
-            resolve: function anonymous(ref) {
-                return new Promise((resolve, reject) => {
+This site houses the WIP drafts for the upcoming OpenDI API specification and related JSON Schemas.
 
-                    const schema_import_base = "@site/docs/schemas/"
+## OpenDI API Specification
 
-                    //Remove the relative file prefix and leading "/" from ref
-                    let adjusted_ref = ref.toString();
-                    while (adjusted_ref.charAt(0) == "." || adjusted_ref.charAt(0) == "/")
-                    {
-                        adjusted_ref = adjusted_ref.substring(1);
-                    }
+The API is specified in [OpenAPI version 3.0.3](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md), in a JSON format.
 
-                    console.log(`${schema_import_base}${adjusted_ref}`);
-                    console.log(`@site/docs/schemas/${adjusted_ref}`);
-                    
-                    //Import ref relative to its actual location
-                    import (`@site/docs/schemas/${adjusted_ref}`)
-                        .then((result) => resolve(result.default))
-                        .catch((err) => reject(err))
-                })
-            }
-        },
-        jsonPointer: "#/definitions/user"
-    }
-}
+You can view the documentation for the API in the OpenDI API category.  
+[View Resource >>](./api/opendi-decision-modeling-api.info.mdx)
 
-# OpenDI JSON Schema
+Documentation generated with [this helpful Docusaurus plugin](https://github.com/PaloAltoNetworks/docusaurus-openapi-docs).
 
-The current working draft of the OpenDI JSON Schema.  
-The view below provides a more accessible browsing experience, but if you'd prefer to view the source, see the [source display](#source) below, or view the [original source](./schemas/Causal-Decision-Model.json).
+## JSON Schemas
 
-## Schema Docs
+Schemas for the API are defined according to [JSON Schema](https://json-schema.org/). Schemas currently use [Draft 07](https://json-schema.org/draft-07/json-schema-release-notes).
 
-<JSONSchemaViewer schema={ Schema } resolverOptions={resolverOptions} />
+Schemas are used throughout the API specification, with documentation embedded in each endpoint where relevant.  
+If you would like to view the full Causal Decision Model schema on its own, we provide separate documentation for the JSON Schema.
 
-## Source
-
-<CodeBlock language="json" title="OpenDI JSON Schema -- Source">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+You can view the JSON Schema documentation in the Schemas category.  
+[View Resource >>](./cdm-full-schema.mdx)
