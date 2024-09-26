@@ -13,26 +13,28 @@ const sidebars = {
         type: 'category',
         label: "OpenDI API",
         link: {
-          type: "generated-index",
-          title: "OpenDI API",
-          description: "This is the work-in-progress standard API definition for OpenDI-compliant software systems.",
-          slug: "/api",
+          type: 'doc',
+          id: 'api-source/api-category-index'
         },
         items: require("./docs/api/sidebar.ts"),
       },
       {
         type: 'category',
         label: 'Schemas',
+        link: {
+          type: 'doc',
+          id: 'schemas/index'
+        },
         items: [
           {
             type: 'doc',
             label: "Causal Decision Model: Full Schema",
-            id: 'cdm-full-schema'
+            id: 'schemas/cdm-full-schema'
           },
           {
             type: 'doc',
             label: "Sample Data",
-            id: 'sample-data'
+            id: 'schemas/sample-data'
           }
         ]
       },

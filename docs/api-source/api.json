@@ -3,7 +3,7 @@
   "info": {
     "title":"OpenDI Decision Modeling API",
     "version":"0.1",
-    "description": "This is a WIP draft of the OpenDI standard API specification.  \nOnce finished, this API will define standard endpoints that OpenDI-compliant systems are expected to implement or use.\n\nThis API largely concerns [Causal Decision Models](api/models.tag.mdx) and other related data structures."
+    "description": "This WIP API specification intends to define standard endpoints that OpenDI-compliant systems are expected to provide or utilize.  \nThis specification's primary goal is to align an ecosystem of vendors, researchers, educators, and other users around a shared interoperability framework.\n\n\n\nThis API largely concerns [Causal Decision Models](api/models.tag.mdx) and other related data structures used to model, simulate, and visualize decisions.\n\n## More info\n\n For more on the motivation behind this effort, see the OpenDI homepage.  \n[View Resource >>](https://opendi.org/)\n\nFor information about the roles and user stories that this API specification supports, see OpenDI Roles and User Stories.  \n[View Resource >>](http://roles-user-stories.opendi.org/)"
   },
   "servers": [
       {
