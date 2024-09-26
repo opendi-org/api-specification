@@ -45,17 +45,27 @@ jobs:
         run: git switch deployment-staging
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
       - name: Build website
-        run: npm run build
+        run: npm run api-rebuild
 
+        # REPLACE BUILD ARTIFACTS
         # Need to put built site in the gh-pages branch for deployment
-      - name: Replace build artifacts
-        # Move site build files out of repo, switch branches, replace old site build files with new files
+      - name: Replace build artifacts - Copy artifacts out of repo
+        # Move site build files out of repo to a temp file
         run: |
           mkdir ../TEMP
           mv ./build ../TEMP/docs
+      
+      - name: Replace build artifacts - Switch branches
+        # Reset current branch to discard any intermediary non-build files 
+        run: |
+          git reset --hard HEAD
           git switch gh-pages
+
+      - name: Replace build artifacts - Copy artifacts back into build branch
+        # Delete prior contents first, so that we replace build artifacts entirely
+        run: |
           rm -rf ./docs/
           mv ../TEMP/docs ./docs
 
