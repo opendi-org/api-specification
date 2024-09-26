@@ -13,27 +13,27 @@
   "tags": [
     {
       "name": "models",
-      "description": "Endpoints for Causal Decision Models. Models are largely made up of [components](api/components.tag.mdx).",
+      "description": "Endpoints for Causal Decision Models. Models are largely made up of [components](api/components.tag.mdx).\n\n## Roles\n\nEndpoints for CDMs will are relevant for software targeting many common DI roles, some of which are listed below.\n\n- [Decision Model Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Model%20Builder/) may use these endpoints to share models and components that they have authored, to receive model components that they wish to incorporate, etc.\n- [Decision Asset Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Asset%20Manager/) may use these endpoints to provide access to curated libraries of CDMs and other DI Assets.\n- [Decision Simulation Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Builder/) may use these endpoints to access and analyze CDMs to prepare them for simulation.",
       "x-displayName": "Models"
     },
     {
       "name": "components",
-      "description": "Endpoints for diagram and evaluatable components used in Causal Decision Models. Components include [Diagrams](./retrieve-a-diagram-component) and [Evaluatables](./retrieve-an-evaluatable-component).",
+      "description": "Endpoints for diagram and evaluatable components used in Causal Decision Models. Components include [Diagrams](./retrieve-a-diagram-component) and [Evaluatables](./retrieve-an-evaluatable-component).\n\n## Roles\n\nEndpoints for CDM components are relevant for software targeting many common DI roles, some of which are listed below.\n\n- [Decision Model Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Model%20Builder/) may use these endpoints to share model components that they have authored.\n- [Decision Asset Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Asset%20Manager/) may use these endpoints to provide access to curated libraries of CDM components and other DI Assets.",
       "x-displayName": "Model Components"
     },
     {
       "name": "simulations",
-      "description": "Endpoints for simulation configurations, for simulating Causal Decision Models.",
+      "description": "Endpoints for simulation configurations, for simulating Causal Decision Models.\n\n## Roles\n\nEndpoints for simulation configurations are relevant for software targeting simulation-related DI roles, some of which are listed below.\n\n- [Decision Simulation Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Builder/) may use these endpoints to edit and share simulation configurations to be run on [Processors](api/processors.tag.mdx), to generate [Results](api/results.tag.mdx).",
       "x-displayName": "Simulations"
     },
     {
       "name": "results",
-      "description": "Endpoints for simulation results, from simulated Causal Decision Models.",
+      "description": "Endpoints for simulation results, from simulated Causal Decision Models.\n\n## Roles\n\nEndpoints for simulation results are relevant for software targeting simulation-related DI roles, some of which are listed below.\n\n- [Decision Simulation Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Manager/) may use these endpoints to send and receive results from simulations they have previously run on [Processors](api/processors.tag.mdx).\n- [Decision Monitors](http://roles-user-stories.opendi.org/Roles/Decision%20Monitor) may use these endpoints in the process of comparing simulation results to ongoing monitored decision models.",
       "x-displayName": "Simulation Results"
     },
     {
       "name": "processors",
-      "description": "Endpoints for processors, representing compute resources used for simulating Causal Decision Models.",
+      "description": "Endpoints for processors, representing compute resources used for simulating Causal Decision Models.\n\n## Roles\n\nEndpoints for processors are relevant for software targeting simulation-related DI roles, some of which are listed below.\n\n- [Decision Simulation Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Manager/) may use these endpoints to manage compute resources in the process of running simulations, to generate [Results](api/results.tag.mdx).",
       "x-displayName": "Processors"
     }
   ],
