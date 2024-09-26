@@ -4,10 +4,9 @@
     "title": "DI Addons Object",
     "description": "(DRAFT) -- This object holds extension/addon objects to be embedded in the CDM JSON.",
     "type": "object",
-    "patternProperties": {
-        "^ADDON_": {
-            "title": "Addon Data",
-            "description": "All addon objects must be named ADDON_[name]. They need to have a UUID and owner information, to mitigate addon naming collisions.",
+    "additionalProperties": {
+        "title": "Addon Data",
+            "description": "All addon objects should be named ADDON_[name]. This naming may be enforced in future versions of OpenAPI.  \nAddons must have a UUID and owner information, to mitigate addon naming collisions.",
             "type": "object",
             "properties": {
                 "addonMeta": {
@@ -45,7 +44,5 @@
             },
             "required": ["addonMeta", "owner"],
             "additionalProperties": false
-        }
-    },
-    "additionalProperties": false
+    }
 }

@@ -1,0 +1,354 @@
+{
+  "openapi":"3.0.3",
+  "info": {
+    "title":"OpenDI Decision Modeling API",
+    "version":"0.1",
+    "description": "This WIP API specification intends to define standard endpoints that OpenDI-compliant systems are expected to provide or utilize.  \nThis specification's primary goal is to align an ecosystem of vendors, researchers, educators, and other users around a shared interoperability framework.\n\n\n\nThis API largely concerns [Causal Decision Models](api/models.tag.mdx) and other related data structures used to model, simulate, and visualize decisions.\n\n## More info\n\n For more on the motivation behind this effort, see the OpenDI homepage.  \n[View Resource >>](https://opendi.org/)\n\nFor information about the roles and user stories that this API specification supports, see OpenDI Roles and User Stories.  \n[View Resource >>](http://roles-user-stories.opendi.org/)"
+  },
+  "servers": [
+      {
+          "url": "/v0"
+      }
+  ],
+  "tags": [
+    {
+      "name": "models",
+      "description": "Endpoints for Causal Decision Models. Models are largely made up of [components](api/components.tag.mdx).\n\n## Roles\n\nEndpoints for CDMs will are relevant for software targeting many common DI roles, some of which are listed below.\n\n- [Decision Model Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Model%20Builder/) may use these endpoints to share models and components that they have authored, to receive model components that they wish to incorporate, etc.\n- [Decision Asset Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Asset%20Manager/) may use these endpoints to provide access to curated libraries of CDMs and other DI Assets.\n- [Decision Simulation Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Builder/) may use these endpoints to access and analyze CDMs to prepare them for simulation.",
+      "x-displayName": "Models"
+    },
+    {
+      "name": "components",
+      "description": "Endpoints for diagram and evaluatable components used in Causal Decision Models. Components include [Diagrams](./retrieve-a-diagram-component) and [Evaluatables](./retrieve-an-evaluatable-component).\n\n## Roles\n\nEndpoints for CDM components are relevant for software targeting many common DI roles, some of which are listed below.\n\n- [Decision Model Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Model%20Builder/) may use these endpoints to share model components that they have authored.\n- [Decision Asset Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Asset%20Manager/) may use these endpoints to provide access to curated libraries of CDM components and other DI Assets.",
+      "x-displayName": "Model Components"
+    },
+    {
+      "name": "simulations",
+      "description": "Endpoints for simulation configurations, for simulating Causal Decision Models.\n\n## Roles\n\nEndpoints for simulation configurations are relevant for software targeting simulation-related DI roles, some of which are listed below.\n\n- [Decision Simulation Builders](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Builder/) may use these endpoints to edit and share simulation configurations to be run on [Processors](api/processors.tag.mdx), to generate [Results](api/results.tag.mdx).",
+      "x-displayName": "Simulations"
+    },
+    {
+      "name": "results",
+      "description": "Endpoints for simulation results, from simulated Causal Decision Models.\n\n## Roles\n\nEndpoints for simulation results are relevant for software targeting simulation-related DI roles, some of which are listed below.\n\n- [Decision Simulation Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Manager/) may use these endpoints to send and receive results from simulations they have previously run on [Processors](api/processors.tag.mdx).\n- [Decision Monitors](http://roles-user-stories.opendi.org/Roles/Decision%20Monitor) may use these endpoints in the process of comparing simulation results to ongoing monitored decision models.",
+      "x-displayName": "Simulation Results"
+    },
+    {
+      "name": "processors",
+      "description": "Endpoints for processors, representing compute resources used for simulating Causal Decision Models.\n\n## Roles\n\nEndpoints for processors are relevant for software targeting simulation-related DI roles, some of which are listed below.\n\n- [Decision Simulation Managers](http://roles-user-stories.opendi.org/Roles/Decision%20Simulation%20Manager/) may use these endpoints to manage compute resources in the process of running simulations, to generate [Results](api/results.tag.mdx).",
+      "x-displayName": "Processors"
+    }
+  ],
+  "paths": {
+    "/models": {
+      "get": {
+          "tags": ["models"],
+          "summary": "Get several models",
+          "description": "Get a list of all models that the user has permission to access.\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+          "parameters": [],
+          "responses": {
+              "200": {
+                  "description": "OK",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": { "$ref": "./schemas/DI-Asset.json" },
+                        "example": [
+                          {
+                            "uuid": "aea9eaaa-8a2d-4cd9-9a9b-e1d7c071cac9",
+                            "name": "Example Model 1",
+                            "summary": "An example Causal Decision Model object for the OpenDI API.",
+                            "version": "0.1",
+                            "draft": true,
+                            "creator": "8370ce90-2998-4fd5-8e90-d8d8e6313f2a",
+                            "createdDate": "2024-09-11T18:54:08.507Z"
+                          },
+                          {
+                            "uuid": "1832c3c1-0678-4a8b-9e61-54ac75aa58fe",
+                            "name": "Example Model 2",
+                            "summary": "A more minimal example CDM object for the OpenDI API."
+                          }
+                        ]
+                      }
+                    }
+                  }
+              }
+          }
+      }
+    },
+    "/models/{modelId}": {
+      "get": {
+          "tags": ["models"],
+          "summary": "Get a model (reduced)",
+          "description": "Find a model by its UUID. Returns a reduced model JSON, with evaluatables and diagrams given as a list of IDs.\n\nFor evaluatable and diagram retrieval, see:  \n- [/evaluatables/{evaluatableId}](api/retrieve-an-evaluatable-component.api.mdx)\n- [/diagrams/{diagramId}](api/retrieve-a-diagram-component.api.mdx)",
+          "parameters": [
+              {
+                  "name": "modelId",
+                  "in": "path",
+                  "description": "UUID of model to retrieve",
+                  "required": true,
+                  "schema": {
+                      "$ref": "./schemas/UUID.json"
+                  }
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "OK",
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "$ref": "./schemas/Causal-Decision-Model-Reduced.json"
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    },
+    "/models/{modelId}/full": {
+      "get": {
+        "tags": ["models"],
+        "summary": "Get a model (complete)",
+        "description": "Find a model by its UUID. Returns the complete model JSON, including all evaluatables and diagrams.",
+        "parameters": [
+          {
+            "name": "modelId",
+            "in": "path",
+            "description": "UUID of model to retrieve",
+            "required": true,
+            "schema": {
+                "$ref": "./schemas/UUID.json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Causal-Decision-Model.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/components": {
+      "get": {
+        "tags": ["components"],
+        "summary": "Get several components",
+        "description": "Get a list of model components (diagram and evaluatable) the user has permission to access.\n\nResults include all types of components, marked with a `componentType` field:\n\n- `diagram`: See [Retrieve a Diagram](./retrieve-a-diagram-component)\n- `evaluatable`: See [Retrieve an evaluatable](./retrieve-an-evaluatable-component)\n\n**NOTE: This proposed endpoint is an aggregate collection, returning a list of instances from multiple resource types.**  \nWe're not yet sure if this is a good idea! If you have thoughts or feedback about common functionality that would justify this sort of aggregate collection, talk to us about it!\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "componentType": {
+                        "enum": ["evaluatable", "diagram"]
+                      },
+                      "uuid": {
+                        "$ref": "./schemas/UUID.json"
+                      }
+                    },
+                    "required": ["componentType", "uuid"]
+                  },
+                  "example": [
+                    {
+                      "uuid": "d74bacf2-3867-42c0-8937-db434be33c68",
+                      "componentType": "evaluatable"
+                    },
+                    {
+                      "uuid": "81ca85d3-1621-498f-a74a-0957531e7330",
+                      "componentType": "evaluatable"
+                    },
+                    {
+                      "uuid": "a4c785cb-bb11-4c0e-9f05-38aef4288229",
+                      "componentType": "diagram"
+                    },
+                    {
+                      "uuid": "8d8e3795-d969-4f8e-ad42-8de12909acce",
+                      "componentType": "evaluatable"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/evaluatables": {
+      "get": {
+        "tags": ["components"],
+        "summary": "Get several evaluatable components",
+        "description": "Get a list of all evaluatable model components the user has permission to access.\n\nEvaluatable components are used in [Models](api/models.tag.mdx).\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "./schemas/DI-Asset.json" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/evaluatables/{evaluatableId}": {
+      "get": {
+        "tags": ["components"],
+        "summary": "Retrieve an evaluatable component",
+        "description": "Find an evaluatable component by its UUID. Returns the complete component JSON.\n\nEvaluatable components are used in [Models](api/models.tag.mdx).",
+        "parameters": [
+          {
+            "name": "evaluatableId",
+            "in": "path",
+            "description": "UUID of evaluatable component to retrieve",
+            "required": true,
+            "schema": {
+                "$ref": "./schemas/UUID.json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/DI-Evaluatable.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/diagrams": {
+      "get": {
+        "tags": ["components"],
+        "summary": "Get several diagram components",
+        "description": "Get a list of all diagram model components the user has permission to access.\n\nDiagram components are used in [Models](api/models.tag.mdx).\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "./schemas/DI-Asset.json" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/diagrams/{diagramId}": {
+      "get": {
+        "tags": ["components"],
+        "summary": "Retrieve a diagram component",
+        "description": "Find a diagram component by its UUID. Returns the complete component JSON.\n\nDiagram components are used in [Models](api/models.tag.mdx).",
+        "parameters": [
+          {
+            "name": "diagramId",
+            "in": "path",
+            "description": "UUID of diagram component to retrieve",
+            "required": true,
+            "schema": {
+                "$ref": "./schemas/UUID.json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/DI-Diagram.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/simulations": {
+      "get": {
+        "tags": ["simulations"],
+        "summary": "Get several simulations",
+        "description": "Get a list of all simulation configurations the user has permission to access.\n\n### TODO:\n\n- **CREATE SCHEMA FOR SIMULATIONS**\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "./schemas/DI-Asset.json" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results": {
+      "get": {
+        "tags": ["results"],
+        "summary": "Get several results",
+        "description": "Get a list of all simulation results the user has permission to access.\n\n### TODO:\n\n- **CREATE SCHEMA FOR RESULTS**\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "./schemas/DI-Asset.json" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/processors": {
+      "get": {
+        "tags": ["processors"],
+        "summary": "Get several processors",
+        "description": "Get a list of all simulation processors the user has permission to access.\n\n### TODO:\n\n- **CREATE SCHEMA FOR PROCESSORS**\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "./schemas/DI-Asset.json" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
