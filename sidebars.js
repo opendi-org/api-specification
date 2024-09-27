@@ -6,13 +6,37 @@ const sidebars = {
     landingSidebar: [
       {
         type: 'doc',
-        label: "Schema",
+        label: "Overview",
         id: 'index'
       },
       {
-        type: 'doc',
-        label: "Sample Data",
-        id: 'sample-data'
+        type: 'category',
+        label: "OpenDI API",
+        link: {
+          type: 'doc',
+          id: 'api-source/api-category-index'
+        },
+        items: require("./docs/api/sidebar.ts"),
+      },
+      {
+        type: 'category',
+        label: 'Schemas',
+        link: {
+          type: 'doc',
+          id: 'schemas/index'
+        },
+        items: [
+          {
+            type: 'doc',
+            label: "Causal Decision Model: Full Schema",
+            id: 'schemas/cdm-full-schema'
+          },
+          {
+            type: 'doc',
+            label: "Sample Data",
+            id: 'schemas/sample-data'
+          }
+        ]
       },
       {
         type: 'category',

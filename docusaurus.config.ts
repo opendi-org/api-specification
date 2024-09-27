@@ -1,15 +1,14 @@
-// @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import type * as Plugin from "@docusaurus/types/src/plugin";
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'OpenDI - JSON Schema (DRAFT)',
-  tagline: 'Early working draft for the upcoming OpenDI JSON Schema specification.',
+  tagline: 'Early working draft of API Specification and Schemas for the upcoming OpenDI standards.',
   favicon: 'img/opendi-icon-small.png',
 
   // Set the production url of your site here
@@ -34,8 +33,9 @@ const config = {
     locales: ['en'],
   },
 
-  // Allows use of @theme/JSONSchemaEditor or @theme/JSONSchemaViewer
-  themes: ["docusaurus-json-schema-plugin"],
+  // Schema-plugin allows use of @theme/JSONSchemaEditor or @theme/JSONSchemaViewer
+  // OpenAPI-docs allows OpenAPI plugin to use its theming
+  themes: ["docusaurus-json-schema-plugin", "docusaurus-theme-openapi-docs"],
 
   presets: [
     [
@@ -44,6 +44,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          docItemComponent: "@theme/ApiItem",
 
           //Set up "Edit this page" option at the bottom of each page
           //Available params given here: https://docusaurus.io/docs/next/api/plugins/@docusaurus/plugin-content-docs#EditUrlFunction
@@ -65,6 +66,26 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "openapi", // plugin id
+        docsPluginId: "classic", // configured for preset-classic
+        config: {
+          OpenDIApi: {
+            specPath: "docs/api-source/api.json",
+            outputDir: "docs/api",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+        } satisfies Plugin.PluginOptions,
+      },
+    ]
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -81,7 +102,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'landingSidebar',
             position: 'left',
-            label: 'JSON Schema (DRAFT)',
+            label: 'API Specification (DRAFT)',
           },
           {
             type: 'docsVersionDropdown',
@@ -116,7 +137,7 @@ const config = {
                 href: 'http://roles-user-stories.opendi.org'
               },
               {
-                label: 'JSON Schema',
+                label: 'API Specification',
                 href: 'http://json-schema.opendi.org'
               },
             ],
