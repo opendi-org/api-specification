@@ -55,12 +55,14 @@ From `main`, deployment pulls **everything else**. This includes all released ve
 
 ## Local deployment testing
 
-The site can easily be tested locally, using Docusaurus's premade npm commands and package configuration.
+The site can be tested locally, using Docusaurus's premade npm commands and package configuration.  
+The API project relies on additional Yarn packages not used in the other OpenDI projects. 
 
 - Ensure you have npm installed. Check [this guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 - Clone the repository for the site you wish to test locally.
-- From the local repo's base directory, run `npm ci` to install node packages.
-- Once complete, use `npm run start`. The site will build and deploy locally, with http://localhost:3000/ filling in as the site's main domain.
+- Enable yarn by following [these instructions](https://yarnpkg.com/getting-started/install). You will need **administrator permissions** to complete these instructions.
+- Install packages with `yarn install`
+- Once complete, use `npm run api-rebuild-run`. The site will build and deploy locally, with http://localhost:3000/ filling in as the site's main domain.
 
 ### Limitations
 

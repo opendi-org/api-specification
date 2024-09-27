@@ -10,7 +10,7 @@ export const resolverOptions = {
             resolve: function anonymous(ref) {
                 return new Promise((resolve, reject) => {
 
-                    const schema_import_base = "@site/docs/schemas/"
+                    const schema_import_base = "./schemas/"
 
                     //Remove the relative file prefix and leading "/" from ref
                     let adjusted_ref = ref.toString();
@@ -20,10 +20,10 @@ export const resolverOptions = {
                     }
 
                     console.log(`${schema_import_base}${adjusted_ref}`);
-                    console.log(`@site/docs/schemas/${adjusted_ref}`);
+                    console.log(`./schemas/${adjusted_ref}`);
                     
                     //Import ref relative to its actual location
-                    import (`@site/docs/schemas/${adjusted_ref}`)
+                    import (`./schemas/${adjusted_ref}`)
                         .then((result) => resolve(result.default))
                         .catch((err) => reject(err))
                 })
