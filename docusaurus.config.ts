@@ -7,20 +7,20 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'OpenDI - JSON Schema (DRAFT)',
+  title: 'OpenDI - API Specification (DRAFT)',
   tagline: 'Early working draft of API Specification and Schemas for the upcoming OpenDI standards.',
   favicon: 'img/opendi-icon-small.png',
 
   // Set the production url of your site here
-  url: 'http://json-schema.opendi.org',
+  url: 'http://opendi.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/api-specification/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'opendi-org', // Usually your GitHub org/user name.
-  projectName: 'json-schema', // Usually your repo name.
+  projectName: 'api-specification', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -53,7 +53,7 @@ const config = {
             {
               return undefined;
             }
-            return "https://github.com/opendi-org/json-schema/tree/dev/" + versionDocsDirPath + "/" + docPath;
+            return "https://github.com/opendi-org/api-specification/tree/dev/" + versionDocsDirPath + "/" + docPath;
           },
 
           routeBasePath: '/'
@@ -111,7 +111,7 @@ const config = {
           {
             'aria-label': 'GitHub Repo',
             className: 'navbar--github-link',
-            href: 'https://github.com/opendi-org/json-schema',
+            href: 'https://github.com/opendi-org/api-specification',
             position: 'right',
           },
           {
@@ -138,7 +138,7 @@ const config = {
               },
               {
                 label: 'API Specification',
-                href: 'http://json-schema.opendi.org'
+                href: 'http://opendi.org/api-specification'
               },
             ],
           },
