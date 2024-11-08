@@ -16,8 +16,8 @@
     "api-rebuild": "yarn docusaurus clean-api-docs all && yarn docusaurus gen-api-docs all && docusaurus build"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.4.0",
-    "@docusaurus/preset-classic": "^3.4.0",
+    "@docusaurus/core": "^3.6.0",
+    "@docusaurus/preset-classic": "^3.6.0",
     "@mdx-js/react": "^3.1.0",
     "@stoplight/json-ref-resolver": "^3.1.6",
     "clsx": "^2.0.0",
@@ -29,8 +29,8 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.4.0",
-    "@docusaurus/types": "^3.4.0"
+    "@docusaurus/module-type-aliases": "^3.6.0",
+    "@docusaurus/types": "^3.6.0"
   },
   "browserslist": {
     "production": [
