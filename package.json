@@ -16,7 +16,7 @@
     "api-rebuild": "yarn docusaurus clean-api-docs all && yarn docusaurus gen-api-docs all && docusaurus build"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.6.0",
+    "@docusaurus/core": "^3.6.3",
     "@docusaurus/preset-classic": "^3.6.0",
     "@mdx-js/react": "^3.1.0",
     "@stoplight/json-ref-resolver": "^3.1.6",
