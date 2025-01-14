@@ -177,6 +177,27 @@
                   }
               }
           }
+      },
+      "delete": {
+        "tags": ["models"],
+        "summary": "Delete a model",
+        "description": "Removes the model with the given UUID from the database.",
+        "parameters": [
+          {
+            "name": "modelId",
+            "in": "path",
+            "description": "UUID of model to delete",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/UUID.json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/models/{modelId}/full": {

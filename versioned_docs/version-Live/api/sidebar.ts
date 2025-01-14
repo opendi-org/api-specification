@@ -40,6 +40,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/delete-a-model",
+          label: "Delete a model",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
           id: "api/get-a-model-complete",
           label: "Get a model (complete)",
           className: "api-method get",
