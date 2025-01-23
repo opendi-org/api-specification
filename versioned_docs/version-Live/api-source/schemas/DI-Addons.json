@@ -4,10 +4,9 @@
     "title": "DI Addons Object",
     "description": "(DRAFT) -- This object holds extension/addon objects to be embedded in the CDM JSON.",
     "type": "object",
-    "patternProperties": {
-        "^ADDON_": {
-            "title": "Addon Data",
-            "description": "All addon objects must be named ADDON_[name]. They need to have a UUID and owner information, to mitigate addon naming collisions.",
+    "additionalProperties": {
+        "title": "Addon Data",
+            "description": "All addon objects should be named ADDON_[name]. This naming may be enforced in future versions of OpenAPI.  \nAddons must have a UUID and owner information, to mitigate addon naming collisions.",
             "type": "object",
             "properties": {
                 "addonMeta": {
@@ -33,12 +32,17 @@
                 },
                 "data": {
                     "title": "Addon Data",
-                    "description": "All addon data goes here. Information stored here is not standardized. Structure determined by addon owners."
+                    "description": "All addon data goes here. Information stored here is not standardized. Structure determined by addon owners.",
+                    "properties": {
+                        "$schema": {
+                            "title": "Addon schema",
+                            "description": "If the addon creator has defined a JSON Schema for this addon, this field should contain the URI for that schema.",
+                            "type": "string"
+                        }
+                    }   
                 }
             },
             "required": ["addonMeta", "owner"],
             "additionalProperties": false
-        }
-    },
-    "additionalProperties": false
+    }
 }

@@ -19,6 +19,9 @@
                         "$ref": "#/$defs/diagramPoint"
                     },
                     {
+                        "$ref": "#/$defs/diagramLine"
+                    },
+                    {
                         "$ref": "#/$defs/diagramBox"
                     },
                     {
