@@ -1,0 +1,44 @@
+# OpenDI JSON Schema
+
+The current working draft of the OpenDI JSON Schema.  
+The view below provides a more accessible browsing experience, but if you'd prefer to view the source, see the [source display](#source) below, or view the [original source](../api-source/schemas/Causal-Decision-Model.json).
+
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "../api-source/schemas/Causal-Decision-Model.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+export const resolverOptions = {
+    //Tell the JSON Schema Viewer how to dynamically import local-file schemas based on the relative $ref path given.
+    //See https://jy95.github.io/docusaurus-json-schema-plugin/docs/demo-viewer/refs/localFile 
+    resolvers: {
+        file: {
+            resolve: function anonymous(ref) {
+                return new Promise((resolve, reject) => {
+
+                    const schema_import_base = "../api-source/schemas/"
+
+                    //Remove the relative file prefix and leading "/" from ref
+                    let adjusted_ref = ref.toString();
+                    while (adjusted_ref.charAt(0) == "." || adjusted_ref.charAt(0) == "/")
+                    {
+                        adjusted_ref = adjusted_ref.substring(1);
+                    }
+                    
+                    //Import ref relative to its actual location
+                    import (`../api-source/schemas/${adjusted_ref}`)
+                        .then((result) => resolve(result.default))
+                        .catch((err) => reject(err))
+                })
+            }
+        },
+        jsonPointer: "#/definitions/user"
+    }
+}
+
+## Schema Docs
+
+<JSONSchemaViewer schema={ Schema } resolverOptions={resolverOptions} />
+
+## Source
+
+<CodeBlock language="json" title="OpenDI JSON Schema -- Source">{JSON.stringify(Schema, null, 2)}</CodeBlock>
