@@ -87,9 +87,6 @@
                     },
                     "required": ["position"],
                     "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
                 }
             },
             "required": ["meta", "causalType", "diaType", "content"],
@@ -130,9 +127,6 @@
                     },
                     "required": ["vertices"],
                     "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
                 }
             },
             "required": ["meta", "causalType", "diaType", "content"],
@@ -182,9 +176,6 @@
                     },
                     "required": ["position", "boundingBoxSize"],
                     "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
                 }
             },
             "required": ["meta", "causalType", "diaType", "content"],
@@ -227,9 +218,6 @@
                     },
                     "required": ["position", "xRadius", "yRadius"],
                     "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
                 }
             },
             "required": ["meta", "causalType", "diaType", "content"],
@@ -284,9 +272,6 @@
                     },
                     "required": ["position", "text"],
                     "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
                 }
             },
             "required": ["meta", "causalType", "diaType", "content"],
@@ -314,9 +299,6 @@
                 "content": {
                     "title": "Custom Diagram Element Contents",
                     "description": "Holds properties for this custom diagram element. Data stored here is not standardized."
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
                 }
             },
             "required": ["meta", "causalType", "diaType", "content"],
@@ -345,16 +327,6 @@
                 }
             },
             "required": ["meta", "source", "target"]
-        },
-
-
-        "associatedEvalElements": {
-            "title": "Associated Evaluatable Elements",
-            "description": "List of evaluatable elements associated with this diagram element.",
-            "type": "array",
-            "items": {
-                "$ref": "./UUID.json"
-            }
         }
     }
 }
