@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ODI-EvalAssets-v0.9-alpha-0225",
+    "title": "DI Evaluatable Assets",
+    "description": "Defines the library of acceptable Evaluatable Assets to be used in Causal Decision Models.",
+    "$defs": {
+        "script": {
+            "title": "Evaluatable Script",
+            "description": "Holds a runnable script.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "evalType": {
+                    "title": "Evaluatable Type",
+                    "description": "The type of evaluatable object. Determines what other properties the schema expects.",
+                    "const": "Script"
+                },
+                "content": {
+                    "title": "Script Contents",
+                    "description": "Holds properties specific to scripts.",
+                    "type": "object",
+                    "properties": {
+                        "script": {"type": "string", "contentMediaType": "text/plain", "contentEncoding": "base64"},
+                        "language": {"enum": ["python", "javascript", "go", "other"]}
+                    },
+                    "required": ["script", "language"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "evalType", "content"],
+            "additionalProperties": false
+        }
+    }
+}

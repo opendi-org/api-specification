@@ -30,6 +30,32 @@
                 "$ref": "./DI-Diagram.json"
             }
         },
+        "evaluatableAssets": {
+            "title": "Evaluatable Assets",
+            "description": "List of all Evaluatable Assets attached to this model. May be used by one or more Evaluatables",
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    {"$ref": "./DI-Evaluatable-Assets.json#/$defs/script"}
+                ]
+            }
+        },
+        "inputOutputValues": {
+            "title": "Input/Output Values",
+            "description": "List of all Input/Output values used by evaluatables in this model. I/O Values can be read or set by Evaluatables, and interactively in Diagrams, via Controls. A single I/O Value can be referenced in multiple Evaluatables and Controls.",
+            "type": "array",
+            "items": {
+                "$ref": "./DI-IO-Value.json"
+            }
+        },
+        "controls": {
+            "title": "Controls",
+            "description": "List of all DI Controls for this model. Controls connect I/O values to Diagram Elements, allowing values to be set or displayed.",
+            "type": "array",
+            "items": {
+                "$ref": "./DI-Control.json"
+            }
+        },
         "addons": {
             "title": "Addon Data",
             "description": "Holds addon objects for storing data not specified in OpenDI standards.",

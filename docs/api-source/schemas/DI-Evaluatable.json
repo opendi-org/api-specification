@@ -14,20 +14,15 @@
             "items": {
                 "title": "Evaluatable Element",
                 "description": "An element in an evaluatable component of a CDM.",
-                "oneOf": [
-                    {
-                        "$ref": "#/$defs/script"
-                    },
-                    {
-                        "$ref": "#/$defs/apiCall"
-                    },
-                    {
-                        "$ref": "#/$defs/binaryBase64"
-                    },
-                    {
-                        "$ref": "#/$defs/customElement"
-                    }
-                ]
+                "$ref": "./DI-Evaluatable-Element.json"
+            }
+        },
+        "entryPoints": {
+            "type": "array",
+            "items": {
+                "title": "UUIDs for Entry Point Elements.",
+                "description": "Lists the Evaluatable Elements that begin the chain of evaluation for a runnable model. These will most often be Levers and Externals.",
+                "$ref": "./UUID.json"
             }
         },
         "addons": {

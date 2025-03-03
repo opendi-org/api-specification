@@ -1,189 +1,230 @@
 {
-    "$schema": "./Causal-Decision-Model.json",
-    "meta": {
-        "uuid": "28eefdc9-d38c-458d-a0b1-cba3706a09e4",
-        "name": "Example/Test Model",
-        "summary": "An example CDM for testing/demonstrating the CDM JSON schema.",
-        "status": "Draft",
-        "version": "0.0.1",
-        "creator": "9744a75e-6339-43ad-beec-b1a4f23e7e26",
-        "createdDate": "2024-08-20T09:45:41-04:00"
+  "$schema": "./Causal-Decision-Model.json",
+  "meta": {
+    "uuid": "28eefdc9-d38c-458d-a0b1-cba3706a09e4",
+    "name": "Example/Test Model",
+    "summary": "An example CDM for testing/demonstrating the CDM JSON schema.",
+    "status": "Draft",
+    "version": "0.0.1",
+    "creator": "9744a75e-6339-43ad-beec-b1a4f23e7e26",
+    "createdDate": "2024-08-20T09:45:41-04:00"
+  },
+  "evaluatables": [
+    {
+      "meta": {
+        "uuid": "c7baceb4-33cf-4b7a-acea-4cd5e15340e5",
+        "name": "Example evaluatable causal decision model."
+      },
+      "elements": [
+        {
+          "meta": {
+            "uuid": "8285d781-826f-4de3-9ded-be75e46935d3",
+            "name": "Sum inputs"
+          },
+          "inputs": [
+            "0dd65d95-d90a-454e-9489-34237d740afd",
+            "b5a14d60-3abc-4306-bc12-3c0678851279"
+          ],
+          "outputs": [
+            "74c6b8cf-ea6b-4ae0-bc52-dc67e0efe630"
+          ],
+          "functionName": "add",
+          "evaluatableAsset": "a14ae3d2-c070-4485-b6d1-3af8e1a87cad"
+        }
+      ],
+      "entryPoints": [
+        "8285d781-826f-4de3-9ded-be75e46935d3"
+      ]
+    }
+  ],
+  "evaluatableAssets": [
+      {
+          "meta": {
+              "uuid": "a14ae3d2-c070-4485-b6d1-3af8e1a87cad",
+              "name": "Add script"
+          },
+          "evalType": "Script",
+          "content": {
+              "script": "KGZ1bmN0aW9uICgpIHsKICBjb25zdCBhZGQgPSBmdW5jdGlvbiAodmFscykgewogICAgY29uc29sZS5sb2coIkFERCBSVU5OSU5HISEhISIpOwogICAgbGV0IHN1bSA9IDA7CiAgICB2YWxzLmZvckVhY2goKHZhbCkgPT4gewogICAgICBzdW0gKz0gdmFsOwogICAgfSk7CiAgICByZXR1cm4gW3N1bV07CiAgfTsKCiAgcmV0dXJuIHsgZnVuY01hcDogeyAiYWRkIjogYWRkIH0gfTsKfSkoKTs=",
+              "language": "javascript"
+          }
+      }
+  ],
+  "inputOutputValues": [
+      {
+          "meta": {
+              "uuid": "0dd65d95-d90a-454e-9489-34237d740afd",
+              "title": "Add_Input_1"
+          },
+          "data": 30
+      },
+      {
+          "meta": {
+              "uuid": "b5a14d60-3abc-4306-bc12-3c0678851279",
+              "title": "Add_Input_2"
+          },
+          "data": 27
+      },
+      {
+          "meta": {
+              "uuid": "74c6b8cf-ea6b-4ae0-bc52-dc67e0efe630",
+              "title": "Add_Output"
+          },
+          "data": null
+      }
+  ],
+  "diagrams": [
+    {
+      "meta": {
+        "uuid": "999cad87-3323-4919-b870-1b91170abe0d",
+        "name": "Example diagram associated with the causal decision model."
+      },
+      "elements": [
+        {
+          "meta": {
+            "uuid": "b7dac5d9-5c33-45bd-b30e-752f04997c1f",
+            "name": "A constraint"
+          },
+          "causalType": "CUSTOM_Constraint",
+          "diaType": "box",
+          "content": {
+            "position": {
+              "x": 50,
+              "y": 510
+            },
+            "boundingBoxSize": {
+              "width": 400,
+              "height": 300
+            }
+          }
+        },
+        {
+          "meta": {
+            "uuid": "15e06e39-f74d-4e83-aed2-817106102c1a",
+            "name": "Range For Add Input 1"
+          },
+          "causalType": "Lever",
+          "diaType": "controlRange",
+          "content": {
+            "position": {
+              "x": 120,
+              "y": 120
+            },
+            "controlParameters": {
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "value": -1,
+              "isInteractive": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "uuid": "200ccb9a-bc2e-41ce-9e36-5b5cee247b5d",
+            "name": "Range For Add Input 2"
+          },
+          "causalType": "Lever",
+          "diaType": "controlRange",
+          "content": {
+            "position": {
+              "x": 120,
+              "y": 230
+            },
+            "controlParameters": {
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "value": -1,
+              "isInteractive": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "uuid": "eaf1c6d3-0797-46fa-b005-52f7ee23c8f0",
+            "name": "Range For Sum"
+          },
+          "causalType": "Outcome",
+          "diaType": "controlRange",
+          "content": {
+            "position": {
+              "x": 360,
+              "y": 150
+            },
+            "controlParameters": {
+              "min": 0,
+              "max": 200,
+              "step": 1,
+              "value": -1,
+              "isInteractive": false
+            }
+          }
+        },
+        {
+          "meta": {
+            "uuid": "4feca1ad-8ebd-4817-852b-03ae277213c9",
+            "name": "Diagram-only Element",
+            "description": "This element is not related to any evaluatable assets via any controls. It also has a null causal type."
+          },
+          "causalType": null,
+          "diaType": "box",
+          "content": {
+            "position": {
+              "x": 480,
+              "y": 460
+            },
+            "boundingBoxSize": {
+              "width": 400,
+              "height": 500
+            }
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "meta": {
+            "uuid": "907d9ac7-547d-456a-8622-f311da1e8fa8",
+            "name": "Add Input 1 --> Sum"
+          },
+          "source": "15e06e39-f74d-4e83-aed2-817106102c1a",
+          "target": "eaf1c6d3-0797-46fa-b005-52f7ee23c8f0"
+        },
+        {
+          "meta": {
+            "uuid": "a1e4006a-e814-435a-a9c7-ff8305efdadf",
+            "name": "Add Input 2 --> Sum"
+          },
+          "source": "200ccb9a-bc2e-41ce-9e36-5b5cee247b5d",
+          "target": "eaf1c6d3-0797-46fa-b005-52f7ee23c8f0"
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "meta": {
+        "uuid": "94e5a529-ca27-4c1f-92a7-0c5fafa4fe18",
+        "name": "Control: Add Input 1"
+      },
+      "inputOutputValues": ["0dd65d95-d90a-454e-9489-34237d740afd"],
+      "diagramElements": ["15e06e39-f74d-4e83-aed2-817106102c1a"]
     },
-    "evaluatables": [
-        {
-            "meta": {
-                "uuid": "c7baceb4-33cf-4b7a-acea-4cd5e15340e5",
-                "name": "Example evaluatable causal decision model."
-            },
-            "elements": [
-                {
-                    "meta": {
-                        "uuid": "16283e16-9c8e-4971-ad58-4d3b92066223",
-                        "name": "An action"
-                    },
-                    "causalType": "Lever",
-                    "evalType": "Script",
-                    "defaultValue": null
-                },
-                {
-                    "meta": {
-                        "uuid": "ea9ea804-2de2-46ea-b0eb-f08d7649c215",
-                        "name": "Another action"
-                    },
-                    "causalType": "Lever",
-                    "evalType": "Script",
-                    "content": {
-                        "script": "Script content (as a string) would go here.",
-                        "language": "lang1"
-                    },
-                    "defaultValue": 0
-                },
-                {
-                    "meta": {
-                        "uuid": "6a6fa173-7bff-4913-9f5b-5da98075302e",
-                        "name": "An outcome"
-                    },
-                    "causalType": "Outcome",
-                    "evalType": "Binary Base64",
-                    "content": {
-                        "base64String": "Bease 64 string would go here."
-                    },
-                    "defaultValue": null
-                },
-                {
-                    "meta": {
-                        "uuid": "42856efc-35f4-4772-9c5c-ad6c6ba8e419",
-                        "name": "A constraint"
-                    },
-                    "causalType": "CUSTOM_Constraint",
-                    "evalType": "Script",
-                    "content": {
-                        "script": "return ea9ea804-2de2-46ea-b0eb-f08d7649c215 < 16283e16-9c8e-4971-ad58-4d3b92066223;",
-                        "language": "lang1"
-                    },
-                    "defaultValue": false
-                }
-            ]
-        }
-    ],
-    "diagrams": [
-        {
-            "meta": {
-                "uuid": "999cad87-3323-4919-b870-1b91170abe0d",
-                "name": "Example diagram associated with the causal decision model."
-            },
-            "elements": [
-                {
-                    "meta": {
-                        "uuid": "f246e2ee-41e4-48e4-b822-b4a9c886ab7e",
-                        "name": "An action"
-                    },
-                    "causalType": "Lever",
-                    "diaType": "box",
-                    "content": {
-                        "position": {
-                            "x": 10,
-                            "y": 10
-                        },
-                        "boundingBoxSize": {
-                            "width": 400,
-                            "height": 300
-                        }
-                    }
-                },
-                {
-                    "meta": {
-                        "uuid": "d701c69a-6cbe-44c5-ac04-b196756170cf",
-                        "name": "Another action"
-                    },
-                    "causalType": "Lever",
-                    "diaType": "box",
-                    "content": {
-                        "position": {
-                            "x": 10,
-                            "y": 400
-                        },
-                        "boundingBoxSize": {
-                            "width": 400,
-                            "height": 300
-                        }
-                    }
-                },
-                {
-                    "meta": {
-                        "uuid": "edeae2fc-79b8-444a-9c52-65c499c171d7",
-                        "name": "An outcome"
-                    },
-                    "causalType": "Outcome",
-                    "diaType": "box",
-                    "content": {
-                        "position": {
-                            "x": 500,
-                            "y": 10
-                        },
-                        "boundingBoxSize": {
-                            "width": 400,
-                            "height": 300
-                        }
-                    }
-                },
-                {
-                    "meta": {
-                        "uuid": "b7dac5d9-5c33-45bd-b30e-752f04997c1f",
-                        "name": "A constraint"
-                    },
-                    "causalType": "CUSTOM_Constraint",
-                    "diaType": "box",
-                    "content": {
-                        "position": {
-                            "x": 10,
-                            "y": 800
-                        },
-                        "boundingBoxSize": {
-                            "width": 400,
-                            "height": 300
-                        }
-                    }
-                },
-                {
-                    "meta": {
-                        "uuid": "c0d51c2e-3063-4637-8db7-c5d5f6779736",
-                        "name": "A diagram-only example element",
-                        "summary": "This element does not have an associated evaluatable element!"
-                    },
-                    "causalType": null,
-                    "diaType": "point",
-                    "content": {
-                        "position": {
-                            "x": 500,
-                            "y": 400
-                        }
-                    }
-                }
-            ],
-            "dependencies": [
-                {
-                    "meta": {
-                        "uuid": "0bb28923-5ef4-483c-af32-1bea58732614"
-                    },
-                    "source": "16283e16-9c8e-4971-ad58-4d3b92066223",
-                    "target": "6a6fa173-7bff-4913-9f5b-5da98075302e"
-                },
-                {
-                    "meta": {
-                        "uuid": "d2d0e096-9d45-41e9-9a47-3a4791895fc0"
-                    },
-                    "source": "ea9ea804-2de2-46ea-b0eb-f08d7649c215",
-                    "target": "6a6fa173-7bff-4913-9f5b-5da98075302e"
-                },
-                {
-                    "meta": {
-                        "uuid": "e3709be0-ea19-41d9-b7c4-7cc602117c27"
-                    },
-                    "source": "42856efc-35f4-4772-9c5c-ad6c6ba8e419",
-                    "target": "ea9ea804-2de2-46ea-b0eb-f08d7649c215"
-                }
-            ]
-        }
-    ]
+    {
+      "meta": {
+        "uuid": "96c8f736-dc2f-4302-9da3-b249b8045e7b",
+        "name": "Control: Add Input 2"
+      },
+      "inputOutputValues": ["b5a14d60-3abc-4306-bc12-3c0678851279"],
+      "diagramElements": ["200ccb9a-bc2e-41ce-9e36-5b5cee247b5d"]
+    },
+    {
+      "meta": {
+        "uuid": "c08f2810-9825-4fc8-946c-85d77d61a960",
+        "name": "Control: Add Output"
+      },
+      "inputOutputValues": ["74c6b8cf-ea6b-4ae0-bc52-dc67e0efe630"],
+      "diagramElements": ["eaf1c6d3-0797-46fa-b005-52f7ee23c8f0"]
+    }
+  ]
 }

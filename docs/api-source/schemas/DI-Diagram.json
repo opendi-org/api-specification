@@ -32,6 +32,9 @@
                     },
                     {
                         "$ref": "#/$defs/customElement"
+                    },
+                    {
+                        "$ref": "#/$defs/controlRange"
                     }
                 ]
             }
@@ -303,6 +306,56 @@
             },
             "required": ["meta", "causalType", "diaType", "content"],
             "additionalProperties": false
+        },
+        "controlRange": {
+            "title": "Control: Range",
+            "description": "Holds data and configuration for a controllable numeric range. Ranges have a min, max, and step size, and can be represented by gauges, sliders, etc.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "causalType": {
+                    "$ref": "./Causal-Type.json"
+                },
+                "diaType": {
+                    "title": "Diagram Type",
+                    "description": "The type of diagram object. Determines what other properties the schema expects.",
+                    "const": "controlRange"
+                },
+                "content": {
+                    "title": "Range Control Contents",
+                    "description": "Holds properties specific to a Range Control Element",
+                    "type": "object",
+                    "properties": {
+                        "position": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "min": {"type": "number", "default": 0},
+                                "max": {"type": "number", "default": 100},
+                                "step": {"type": "number", "default": 1},
+                                "value": {"type": "number", "default": -1},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["min", "max", "step", "value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["position", "controlParameters"],
+                    "additionalProperties": false
+                }
+            }
         },
         "$comment": "Other types of graphical elements TBD",
 

@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ODI-EvalElem-v0.0-alpha-0225",
+    "title": "DI Evaluatable Element",
+    "description": "(DRAFT) -- Represents an evaluatable component of a Causal Decision Model for OpenDI-compliant software. Used for simulation/computation.",
+    "properties": {
+        "meta": {
+            "title": "Asset Metadata",
+            "description": "Metadata shared by all DI Assets",
+            "$ref": "./DI-Asset.json"
+        },
+        "inputs": {
+            "type": "array",
+            "items": {
+                "title": "Input Value UUIDs",
+                "description": "UUIDs for Inputs used by this eval element. To be fed into the specified function.",
+                "$ref": "./UUID.json"
+            }
+        },
+        "outputs": {
+            "type": "array",
+            "items": {
+                "title": "Output Value UUIDs",
+                "description": "UUIDs for Outputs used by this eval element. Updated by the specified function.",
+                "$ref": "./UUID.json"
+            }
+        },
+        "functionName": {
+            "title": "Function Name",
+            "description": "Name of the function used in the referenced Evaluatable Asset. Inputs are passed into this function, and outputs are populated by it.",
+            "type": "string"
+        },
+        "evaluatableAsset": {
+            "title": "Evaluatable Asset",
+            "description": "UUID for the Evaluatable Asset used by this Evaluatable Element.",
+            "$ref": "./UUID.json"
+        }
+    },
+    "required": ["meta", "evaluatableAsset"]
+}
