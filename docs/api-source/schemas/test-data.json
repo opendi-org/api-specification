@@ -10,10 +10,10 @@
         },
         "version": "0.1",
         "draft": true,
-        "updatedDate": "2025-03-17T08:33:30-04:00",
+        "updatedDate": "2025-03-18T08:33:30-04:00",
         "createdDate": "2025-03-17T08:33:30-04:00"
     },
-    "evaluatables": [
+    "runnableModels": [
         {
             "meta": {
                 "uuid": "a0ae9206-043c-4498-bc07-e52bb3acb62d",

@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ODI-Runnable-v0.0-alpha-0325",
+    "title": "DI Runnable Model",
+    "description": "(DRAFT) -- Represents a runnable component of a Causal Decision Model for OpenDI-compliant software. Used for simulation/computation.",
+    "properties": {
+        "meta": {
+            "title": "Asset Metadata",
+            "description": "Metadata shared by all DI Assets",
+            "$ref": "./DI-Asset.json"
+        },
+        "elements": {
+            "type": "array",
+            "items": {
+                "title": "Evaluatable Element",
+                "description": "An element in a Runnable Model component of a CDM.",
+                "$ref": "./DI-Evaluatable-Element.json"
+            }
+        },
+        "addons": {
+            "title": "Addon Data",
+            "description": "Object containing data for various addons.",
+            "$ref": "./DI-Addons.json"
+        }
+    },
+    "required": ["meta", "elements"]
+}

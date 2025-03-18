@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "ODI-EvalElem-v0.0-alpha-0225",
+    "$id": "ODI-EvalElem-v0.0-alpha-0325",
     "title": "DI Evaluatable Element",
-    "description": "(DRAFT) -- Represents an evaluatable component of a Causal Decision Model for OpenDI-compliant software. Used for simulation/computation.",
+    "description": "(DRAFT) -- Represents an evaluatable component of a Runnable Model in a CDM, for OpenDI-compliant software. Used for simulation/computation.",
     "properties": {
         "meta": {
             "title": "Asset Metadata",
