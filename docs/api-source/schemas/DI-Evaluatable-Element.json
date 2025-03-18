@@ -36,5 +36,5 @@
             "$ref": "./UUID.json"
         }
     },
-    "required": ["meta", "evaluatableAsset"]
+    "required": ["meta", "inputs", "outputs", "functionName", "evaluatableAsset"]
 }

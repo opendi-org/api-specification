@@ -35,6 +35,12 @@
                     },
                     {
                         "$ref": "#/$defs/controlRange"
+                    },
+                    {
+                        "$ref": "#/$defs/controlText"
+                    },
+                    {
+                        "$ref": "#/$defs/controlBoolean"
                     }
                 ]
             }
@@ -355,7 +361,107 @@
                     "required": ["position", "controlParameters"],
                     "additionalProperties": false
                 }
-            }
+            },
+            "required": ["meta", "causalType", "diaType", "content"],
+            "additionalProperties": false
+        },
+        "controlText": {
+            "title": "Control: Text",
+            "description": "Holds data and configuration for a controllable text input.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "causalType": {
+                    "$ref": "./Causal-Type.json"
+                },
+                "diaType": {
+                    "title": "Diagram Type",
+                    "description": "The type of diagram object. Determines what other properties the schema expects.",
+                    "const": "controlText"
+                },
+                "content": {
+                    "title": "Text Control Contents",
+                    "description": "Holds properties specific to a Text Control Element",
+                    "type": "object",
+                    "properties": {
+                        "position": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "value": {"type": "string", "default": ""},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["position", "controlParameters"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "causalType", "diaType", "content"],
+            "additionalProperties": false
+        },
+        "controlBoolean": {
+            "title": "Control: Boolean",
+            "description": "Holds data and configuration for a controllable boolean input (generally a checkbox).",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "causalType": {
+                    "$ref": "./Causal-Type.json"
+                },
+                "diaType": {
+                    "title": "Diagram Type",
+                    "description": "The type of diagram object. Determines what other properties the schema expects.",
+                    "const": "controlBoolean"
+                },
+                "content": {
+                    "title": "Boolean Control Contents",
+                    "description": "Holds properties specific to a Boolean Control Element",
+                    "type": "object",
+                    "properties": {
+                        "position": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "value": {"type": "boolean", "default": false},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["position", "controlParameters"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "causalType", "diaType", "content"],
+            "additionalProperties": false
         },
         "$comment": "Other types of graphical elements TBD",
 

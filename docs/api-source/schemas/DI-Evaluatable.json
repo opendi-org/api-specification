@@ -17,14 +17,6 @@
                 "$ref": "./DI-Evaluatable-Element.json"
             }
         },
-        "entryPoints": {
-            "type": "array",
-            "items": {
-                "title": "UUIDs for Entry Point Elements.",
-                "description": "Lists the Evaluatable Elements that begin the chain of evaluation for a runnable model. These will most often be Levers and Externals.",
-                "$ref": "./UUID.json"
-            }
-        },
         "addons": {
             "title": "Addon Data",
             "description": "Object containing data for various addons.",
