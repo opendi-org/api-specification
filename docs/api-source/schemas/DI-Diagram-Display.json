@@ -1,0 +1,382 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ODI-DiaDisplay-v0.0-alpha-0325",
+    "title": "DI Diagram Display",
+    "description": "(DRAFT) -- Library of display components for use in a Causal Decision Diagram, for OpenDI-compliant software.",
+    "oneOf": [
+        {
+            "title": "Display: Point",
+            "description": "Holds a position/point in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "point"
+                },
+                "content": {
+                    "title": "Point Contents",
+                    "description": "Holds properties specific to a Point.",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Line",
+            "description": "Holds data for a line element in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "line"
+                },
+                "content": {
+                    "title": "Line Contents",
+                    "description": "Holds properties specific to a Text Element",
+                    "type": "object",
+                    "properties": {
+                        "vertices": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "x": {"type": "number", "default": 0},
+                                    "y": {"type": "number", "default": 0}
+                                }
+                            }
+                        }
+                    },
+                    "required": ["vertices"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Box",
+            "description": "Holds data for a box in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "box"
+                },
+                "content": {
+                    "title": "Box Contents",
+                    "description": "Holds properties specific to a Box",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "boundingBoxSize": {
+                            "type": "object",
+                            "properties": {
+                                "width": {"type": "number", "default": 100},
+                                "height": {"type": "number", "default": 100}
+                            },
+                            "required": ["width", "height"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["boundingBoxSize"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Ellipse",
+            "description": "Holds data for an ellipse in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "ellipse"
+                },
+                "content": {
+                    "title": "Ellipse Contents",
+                    "description": "Holds properties specific to an Ellipse",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "xRadius": { "type": "number", "default": 10 },
+                        "yRadius": { "type": "number", "default": 10 }
+                    },
+                    "required": ["xRadius", "yRadius"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Text",
+            "description": "Holds data for a text element in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "text"
+                },
+                "content": {
+                    "title": "Text Contents",
+                    "description": "Holds properties specific to a Text Element",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "boundingBoxSize": {
+                            "type": "object",
+                            "properties": {
+                                "width": {"type": "number", "default": 100},
+                                "height": {"type": "number", "default": 100}
+                            },
+                            "required": ["width", "height"],
+                            "additionalProperties": false
+                        },
+                        "text": { "type": "string", "default": "" },
+                        "font": {
+                            "MIMEType": {"type": "string", "default": "font/otf"},
+                            "base64String": {"type": "string"}
+                        }
+                    },
+                    "required": ["text"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Custom Element",
+            "description": "Holds data for a custom graphical element in a CDD. Data stored in this type of element is not standardized.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "type": "string",
+                    "pattern": "^CUSTOM_.*"
+                },
+                "content": {
+                    "title": "Custom Diagram Element Contents",
+                    "description": "Holds properties for this custom diagram element. Data stored here is not standardized."
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Range",
+            "description": "Holds data and configuration for a controllable numeric range. Ranges have a min, max, and step size, and can be represented by gauges, sliders, etc.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlRange"
+                },
+                "content": {
+                    "title": "Range Control Contents",
+                    "description": "Holds properties specific to a Range Control Element",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "min": {"type": "number", "default": 0},
+                                "max": {"type": "number", "default": 100},
+                                "step": {"type": "number", "default": 1},
+                                "value": {"type": "number", "default": -1},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["min", "max", "step", "value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Text",
+            "description": "Holds data and configuration for a controllable text input.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlText"
+                },
+                "content": {
+                    "title": "Text Control Contents",
+                    "description": "Holds properties specific to a Text Control Element",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "value": {"type": "string", "default": ""},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Boolean",
+            "description": "Holds data and configuration for a controllable boolean input (generally a checkbox).",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlBoolean"
+                },
+                "content": {
+                    "title": "Boolean Control Contents",
+                    "description": "Holds properties specific to a Boolean Control Element",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "value": {"type": "boolean", "default": false},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        }
+    ]
+}

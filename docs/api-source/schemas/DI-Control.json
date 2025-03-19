@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "ODI-Control-v0.0-alpha-0225",
+    "$id": "ODI-Control-v0.0-alpha-0325",
     "title": "DI Control",
     "description": "(DRAFT) -- Represents a Controllable element of a DI Diagram. Controls create interactive Diagram elements by connecting the display portion of the element to Evaluatable element(s) and Input/Output Value(s).",
     "properties": {
@@ -17,15 +17,15 @@
                 "$ref": "./UUID.json"
             }
         },
-        "diagramElements": {
-            "title": "UUIDs for the Diagram Elements that use this control.",
-            "description": "DI Diagram Elements used by this control. These will be elements that display values, like numeric ranges, curves, etc.",
+        "displays": {
+            "title": "UUIDs for the Display objects that use this control.",
+            "description": "DI Diagram Displays used by this control. These display values, like numeric ranges, curves, etc.",
             "type": "array",
             "items": {
                 "$ref": "./UUID.json"
             }
         }
     },
-    "required": ["meta", "inputOutputValues", "diagramElements"],
+    "required": ["meta", "inputOutputValues", "displays"],
     "additionalProperties": false
 }

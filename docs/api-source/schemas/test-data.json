@@ -10,7 +10,7 @@
         },
         "version": "0.1",
         "draft": true,
-        "updatedDate": "2025-03-18T08:33:30-04:00",
+        "updatedDate": "2025-03-19T08:33:30-04:00",
         "createdDate": "2025-03-17T08:33:30-04:00"
     },
     "runnableModels": [
@@ -171,17 +171,24 @@
                         "summary": "(For Word 1+2)"
                     },
                     "causalType": "External",
-                    "diaType": "controlBoolean",
-                    "content": {
-                        "position": {
-                            "x": 510,
-                            "y": 250
-                        },
-                        "controlParameters": {
-                            "value": false,
-                            "isInteractive": true
+                    "position": {
+                        "x": 510,
+                        "y": 250
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "5a52e7bc-0749-482e-acd6-8ce93cb41cf1"
+                            },
+                            "displayType": "controlBoolean",
+                            "content": {
+                                "controlParameters": {
+                                    "value": false,
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -189,17 +196,24 @@
                         "name": "Word 2"
                     },
                     "causalType": "Lever",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 210,
-                            "y": 200
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": true
+                    "position": {
+                        "x": 210,
+                        "y": 200
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "668f432c-13ce-48cf-9cbe-a4091f9632fa"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -207,17 +221,24 @@
                         "name": "Word 1"
                     },
                     "causalType": "Lever",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 210,
-                            "y": 130
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": true
+                    "position": {
+                        "x": 210,
+                        "y": 130
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "11f99fc9-8a64-4a0f-8460-6dc96684c8f6"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -226,17 +247,24 @@
                         "summary": "(For Word 3+4)"
                     },
                     "causalType": "External",
-                    "diaType": "controlBoolean",
-                    "content": {
-                        "position": {
-                            "x": 510,
-                            "y": 500
-                        },
-                        "controlParameters": {
-                            "value": false,
-                            "isInteractive": true
+                    "position": {
+                        "x": 510,
+                        "y": 500
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "b3e9e1b2-b86a-4335-b3f7-483d50eaff57"
+                            },
+                            "displayType": "controlBoolean",
+                            "content": {
+                                "controlParameters": {
+                                    "value": false,
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -244,17 +272,24 @@
                         "name": "Word 4"
                     },
                     "causalType": "Lever",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 200,
-                            "y": 450
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": true
+                    "position": {
+                        "x": 200,
+                        "y": 450
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "cb0363d8-2fb8-48d1-ac67-3dc6ee3dd04f"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -262,17 +297,24 @@
                         "name": "Word 3"
                     },
                     "causalType": "Lever",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 200,
-                            "y": 380
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": true
+                    "position": {
+                        "x": 200,
+                        "y": 380
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "f7c36f3d-0b0e-4678-a98e-65a0433abad9"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -280,17 +322,24 @@
                         "name": "Word 3+4"
                     },
                     "causalType": "Intermediate",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 520,
-                            "y": 410
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": false
+                    "position": {
+                        "x": 520,
+                        "y": 410
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "6e29a408-ef3c-4c1a-9154-89fd77e3f457"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": false
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -298,17 +347,24 @@
                         "name": "Word 1+2"
                     },
                     "causalType": "Intermediate",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 520,
-                            "y": 160
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": false
+                    "position": {
+                        "x": 520,
+                        "y": 160
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "65e02c18-3fe4-419f-90f0-c69be1e14a4d"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": false
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -317,17 +373,24 @@
                         "summary": "(For Final Word)"
                     },
                     "causalType": "External",
-                    "diaType": "controlBoolean",
-                    "content": {
-                        "position": {
-                            "x": 840,
-                            "y": 390
-                        },
-                        "controlParameters": {
-                            "value": false,
-                            "isInteractive": true
+                    "position": {
+                        "x": 840,
+                        "y": 390
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "3aeab456-ccb6-435e-90d7-1cd2c776ff4b"
+                            },
+                            "displayType": "controlBoolean",
+                            "content": {
+                                "controlParameters": {
+                                    "value": false,
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 },
                 {
                     "meta": {
@@ -335,17 +398,24 @@
                         "name": "Final Word"
                     },
                     "causalType": "Outcome",
-                    "diaType": "controlText",
-                    "content": {
-                        "position": {
-                            "x": 850,
-                            "y": 300
-                        },
-                        "controlParameters": {
-                            "value": "",
-                            "isInteractive": true
+                    "position": {
+                        "x": 850,
+                        "y": 300
+                    },
+                    "displays": [
+                        {
+                            "meta": {
+                                "uuid": "1321c045-0c24-43f2-9de6-5b7fad1924c1"
+                            },
+                            "displayType": "controlText",
+                            "content": {
+                                "controlParameters": {
+                                    "value": "",
+                                    "isInteractive": true
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
             ],
             "dependencies": [
@@ -431,7 +501,7 @@
                 "name": "Control: Word_1"
             },
             "inputOutputValues": ["08fd2f58-9f16-4864-be4c-5a508afd7e08"],
-            "diagramElements": ["43d3cd2c-d774-4a83-9720-77432c54c8cb"]
+            "displays": ["11f99fc9-8a64-4a0f-8460-6dc96684c8f6"]
         },
         {
             "meta": {
@@ -439,7 +509,7 @@
                 "name": "Control: Word_2"
             },
             "inputOutputValues": ["c424d96a-c33c-4d35-bf31-bd0eddbf0ec9"],
-            "diagramElements": ["8c25dcf2-75c2-4294-83c3-d00cee8830ad"]
+            "displays": ["668f432c-13ce-48cf-9cbe-a4091f9632fa"]
         },
         {
             "meta": {
@@ -447,7 +517,7 @@
                 "name": "Control: Word_12"
             },
             "inputOutputValues": ["bcc5cf31-b331-4de8-82d1-ea656c0961f0"],
-            "diagramElements": ["ee23ff36-0e6a-4ca3-af30-e9fb4704dae8"]
+            "displays": ["65e02c18-3fe4-419f-90f0-c69be1e14a4d"]
         },
         {
             "meta": {
@@ -455,7 +525,7 @@
                 "name": "Control: Word_3"
             },
             "inputOutputValues": ["9d621de0-b56e-4ab1-ace0-6fdab7b3e654"],
-            "diagramElements": ["030c2eb2-ded9-429b-846b-336465918840"]
+            "displays": ["f7c36f3d-0b0e-4678-a98e-65a0433abad9"]
         },
         {
             "meta": {
@@ -463,7 +533,7 @@
                 "name": "Control: Word_4"
             },
             "inputOutputValues": ["c464d0b9-6cd0-4198-b6ab-79c3bd7b27f9"],
-            "diagramElements": ["e7c190a7-b2ca-4f7a-abd2-a1f988d57141"]
+            "displays": ["cb0363d8-2fb8-48d1-ac67-3dc6ee3dd04f"]
         },
         {
             "meta": {
@@ -471,7 +541,7 @@
                 "name": "Control: Word_34"
             },
             "inputOutputValues": ["da30c2db-4ee6-49de-85d4-e53a2cdcd44d"],
-            "diagramElements": ["73ea7e76-1599-4c06-8cd8-902052e30b90"]
+            "displays": ["6e29a408-ef3c-4c1a-9154-89fd77e3f457"]
         },
         {
             "meta": {
@@ -479,7 +549,7 @@
                 "name": "Control: Word_1234"
             },
             "inputOutputValues": ["3756b8f4-03a5-4e9c-9dcd-05557593bb39"],
-            "diagramElements": ["cf7627e8-41de-405d-b19c-69efc8fc7ffc"]
+            "displays": ["1321c045-0c24-43f2-9de6-5b7fad1924c1"]
         },
         {
             "meta": {
@@ -487,7 +557,7 @@
                 "name": "Control: Bool_Word12"
             },
             "inputOutputValues": ["32e271b2-29b1-47ab-b896-68109b50cf8d"],
-            "diagramElements": ["2692d043-ca34-4fd7-8bd7-47a9c52d22b2"]
+            "displays": ["5a52e7bc-0749-482e-acd6-8ce93cb41cf1"]
         },
         {
             "meta": {
@@ -495,7 +565,7 @@
                 "name": "Control: Bool_Word34"
             },
             "inputOutputValues": ["1b3fb9e7-a687-45ff-85d5-6509af926e28"],
-            "diagramElements": ["2e86b7af-1004-4269-9d63-7ab21ace8cf1"]
+            "displays": ["b3e9e1b2-b86a-4335-b3f7-483d50eaff57"]
         },
         {
             "meta": {
@@ -503,7 +573,7 @@
                 "name": "Control: Bool_Word1234"
             },
             "inputOutputValues": ["7ad959dd-79cb-446e-86c3-541a237c48f0"],
-            "diagramElements": ["44a457e3-01ab-46fb-bc54-1154bb556d71"]
+            "displays": ["3aeab456-ccb6-435e-90d7-1cd2c776ff4b"]
         }
     ]
 }

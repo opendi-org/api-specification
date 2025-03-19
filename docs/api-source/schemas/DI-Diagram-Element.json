@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ODI-DiaElem-v0.0-alpha-0325",
+    "title": "DI Diagram Element",
+    "description": "(DRAFT) -- Represents an element of a diagram (CDD) in a CDM, for OpenDI-compliant software. May have Display objects attached.",
+    "type": "object",
+    "properties": {
+        "meta": {
+            "title": "Asset Metadata",
+            "description": "Metadata shared by all DI Assets",
+            "$ref": "./DI-Asset.json"
+        },
+        "causalType": {
+            "$ref": "./Causal-Type.json"
+        },
+        "position": {
+            "type": "object",
+            "properties": {
+                "x": {"type": "number", "default": 0},
+                "y": {"type": "number", "default": 0}
+            },
+            "required": ["x", "y"],
+            "additionalProperties": false
+        },
+        "displays": {
+            "title": "Display Components",
+            "description": "List of display components attached to this Diagram Element",
+            "type": "array",
+            "items": { "$ref": "./DI-Diagram-Display.json"}
+        },
+        "addons": {
+            "title": "Addon Data",
+            "description": "Object containing data for various addons.",
+            "$ref": "./DI-Addons.json"
+        }
+    },
+    "required": ["meta", "causalType", "position"],
+    "additionalProperties": false
+}
