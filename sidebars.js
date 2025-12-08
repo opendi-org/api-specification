@@ -30,11 +30,6 @@ const sidebars = {
             type: 'doc',
             label: "Causal Decision Model: Full Schema",
             id: 'schemas/cdm-full-schema'
-          },
-          {
-            type: 'doc',
-            label: "Sample Data",
-            id: 'schemas/sample-data'
           }
         ]
       },
