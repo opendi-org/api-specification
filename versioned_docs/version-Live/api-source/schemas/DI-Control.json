@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/DI-Control.json",
+    "title": "DI Control",
+    "description": "(DRAFT) -- Represents a Controllable element of a DI Diagram. Controls create interactive Diagram elements by connecting the display portion of the element to Evaluatable element(s) and Input/Output Value(s).",
+    "properties": {
+        "meta": {
+            "title": "Asset Metadata",
+            "description": "Metadata shared by all DI Assets",
+            "$ref": "./DI-Asset.json"
+        },
+        "inputOutputValues": {
+            "title": "UUIDs for Input/Output Values used by this Control.",
+            "description": "DI I/O Values used by this control. These can be read or set by the control.",
+            "type": "array",
+            "items": {
+                "$ref": "./UUID.json"
+            }
+        },
+        "displays": {
+            "title": "UUIDs for the Display objects that use this control.",
+            "description": "DI Diagram Displays used by this control. These display values, like numeric ranges, curves, etc.",
+            "type": "array",
+            "items": {
+                "$ref": "./UUID.json"
+            }
+        }
+    },
+    "required": ["meta", "inputOutputValues", "displays"],
+    "additionalProperties": false
+}

@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/DI-Evaluatable-Element.json",
+    "title": "DI Evaluatable Element",
+    "description": "(DRAFT) -- Represents an evaluatable component of a Runnable Model in a CDM, for OpenDI-compliant software. Used for simulation/computation.",
+    "type": "object",
+    "properties": {
+        "meta": {
+            "title": "Asset Metadata",
+            "description": "Metadata shared by all DI Assets",
+            "$ref": "./DI-Asset.json"
+        },
+        "inputs": {
+            "type": "array",
+            "items": {
+                "title": "Input Value UUIDs",
+                "description": "UUIDs for Inputs used by this eval element. To be fed into the specified function.",
+                "$ref": "./UUID.json"
+            }
+        },
+        "outputs": {
+            "type": "array",
+            "items": {
+                "title": "Output Value UUIDs",
+                "description": "UUIDs for Outputs used by this eval element. Updated by the specified function.",
+                "$ref": "./UUID.json"
+            }
+        },
+        "functionName": {
+            "title": "Function Name",
+            "description": "Name of the function used in the referenced Evaluatable Asset. Inputs are passed into this function, and outputs are populated by it.",
+            "type": "string"
+        },
+        "apiCacheSize": {
+            "title": "API Cache Size",
+            "description": "Maximum number of entries allowed for this evaluatable element in the cache of API results. Set to 0 if you want this evaluatable element to always re-send API requests.",
+            "type": "number",
+            "default": 2
+        },
+        "evaluatableAsset": {
+            "title": "Evaluatable Asset",
+            "description": "UUID for the Evaluatable Asset used by this Evaluatable Element.",
+            "$ref": "./UUID.json"
+        },
+        "addons": {
+            "title": "Addon Data",
+            "description": "Object containing data for various addons.",
+            "$ref": "./DI-Addons.json"
+        }
+    },
+    "required": ["meta", "inputs", "outputs", "evaluatableAsset"]
+}
