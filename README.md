@@ -1,8 +1,8 @@
-![](./docs/img/opendi-icon.png)
+![](./docs/img/opendi-logo.png)
 
 # Welcome to OpenDI
 
-Welcome! You're currently browsing source files for the OpenDI public website - API Specification.
+Welcome! You're browsing source files for the OpenDI API Specification docs.
 
 ## Get started
 
