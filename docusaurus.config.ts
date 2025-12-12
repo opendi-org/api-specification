@@ -214,6 +214,10 @@ const config = {
                 label: 'API Specification',
                 href: 'http://opendi.org/api-specification'
               },
+              {
+                label: 'CDM Authoring Tool',
+                href: 'http://opendi.org/cdd-authoring-tool'
+              },
             ],
           },
         ],
