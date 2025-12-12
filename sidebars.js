@@ -39,18 +39,23 @@ const sidebars = {
         items: [
           {
             type: 'link',
-            label: 'Home',
+            label: 'Main Site',
             href: 'https://opendi.org'
           },
           {
             type: 'link',
-            label: 'Glossary',
-            href: 'https://opendi.org/OpenDI%20Glossary/'
+            label: 'Roles and User Stories',
+            href: 'http://opendi.org/roles-user-stories'
           },
           {
             type: 'link',
-            label: 'How to Contribute',
-            href: 'https://opendi.org/How%20To%20Contribute/'
+            label: 'API Specification',
+            href: 'http://opendi.org/api-specification'
+          },
+          {
+            type: 'link',
+            label: 'CDM Authoring Tool',
+            href: 'http://opendi.org/cdd-authoring-tool'
           }
         ]
       }
