@@ -7,9 +7,9 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'OpenDI - API Specification (DRAFT)',
+  title: 'OpenDI Standard API Specification',
   tagline: 'Early working draft of API Specification and Schemas for the upcoming OpenDI standards.',
-  favicon: 'img/opendi-icon-small.png',
+  favicon: 'img/opendi-favicon.ico',
 
   // Set the production url of your site here
   url: 'http://opendi.org',
@@ -114,10 +114,10 @@ const config = {
     ({
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'OpenDI',
         logo: {
           alt: 'OpenDI Logo',
-          src: 'img/opendi-icon.png',
+          src: 'img/opendi-logo.png',
+          srcDark: 'img/opendi-logo-dark.png',
           href: 'https://opendi.org'
         },
         items: [
@@ -125,7 +125,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'landingSidebar',
             position: 'left',
-            label: 'API Specification (DRAFT)',
+            label: 'OpenDI API Specification (DRAFT)',
           },
           {
             type: 'docsVersionDropdown',
@@ -149,11 +149,62 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Community',
             items: [
               {
-                label: 'Home',
-                to: 'http://opendi.org',
+                label: 'Discord',
+                href: 'https://discord.gg/FtAX3JStJz',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/opendi-org',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'Blog',
+                href: 'http://opendi.org/',
+              },
+              {
+                label: 'Decision Intelligence News',
+                href: 'https://www.scoop.it/topic/decision-intelligence/',
+              },
+              {
+                label: 'OpenDI Glossary',
+                href: 'http://opendi.org',
+              },
+            ],
+          },
+          {
+            title: 'Follow Us',
+            items: [
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/opendi-org/',
+              },
+              {
+                label: 'Facebook',
+                href: 'https://www.facebook.com/people/OpenDi/100095177432725/'
+              },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/channel/UC4Thj0JegsJ3csqb-iEPI5A'
+              },
+              {
+                label: 'BlueSky',
+                href: 'https://bsky.app/profile/opendi.bsky.social'
+              }
+            ],
+          },
+          {
+            title: 'OpenDI',
+            items: [
+              {
+                label: 'Main Site',
+                href: 'http://opendi.org',
               },
               {
                 label: 'Roles and User Stories',
@@ -163,23 +214,14 @@ const config = {
                 label: 'API Specification',
                 href: 'http://opendi.org/api-specification'
               },
-            ],
-          },
-          {
-            title: 'Get Involved',
-            items: [
               {
-                label: 'OpenDI Discord',
-                href: 'https://discord.gg/FtAX3JStJz',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/opendi-org',
+                label: 'CDM Authoring Tool',
+                href: 'http://opendi.org/cdd-authoring-tool'
               },
             ],
           },
         ],
-        copyright: `Built with Docusaurus.`,
+        copyright: `© 2025-26 OpenDI. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
