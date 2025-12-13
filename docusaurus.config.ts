@@ -159,6 +159,18 @@ const config = {
                 label: 'GitHub',
                 href: 'https://github.com/opendi-org',
               },
+              {
+                label: 'Quantellia',
+                href: 'https://quantellia.com/',
+              },
+              {
+                label: 'CModel Data, Inc',
+                href: 'https://www.cmodel.io/',
+              },
+              {
+                label: 'NC State University',
+                href: 'https://www.ncsu.edu/',
+              },
             ],
           },
           {
@@ -175,6 +187,10 @@ const config = {
               {
                 label: 'OpenDI Glossary',
                 href: 'http://opendi.org',
+              },
+              {
+                label: 'Decision Intelligence Webinars',
+                href: 'https://quantellia.com/ai-and-di-workshops/'
               },
             ],
           },
@@ -196,7 +212,7 @@ const config = {
               {
                 label: 'BlueSky',
                 href: 'https://bsky.app/profile/opendi.bsky.social'
-              }
+              },
             ],
           },
           {
