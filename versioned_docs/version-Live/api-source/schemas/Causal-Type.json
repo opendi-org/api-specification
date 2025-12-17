@@ -1,9 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "DI-Causal-Type-v0.0-alpha-0824",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/Causal-Type.json",
     "title": "Causal Type",
     "description": "The causal type of the decision element.",
-    "$comment": "Ensures types are consistent across diagrams and evaluatable models.",
+    "$comment": "Ensures causal type names are consistent wherever used.",
     "oneOf": [
         {
             "enum": ["Lever", "Intermediate", "Outcome", "External", "Goal", null]

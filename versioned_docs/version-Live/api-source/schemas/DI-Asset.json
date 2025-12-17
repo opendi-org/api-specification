@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "ODI-Asset-v0.0-alpha-0824",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/DI-Asset.json",
     "title": "DI Base Asset",
     "description": "(DRAFT) -- Base properties shared by all DI Assets.",
     "type": "object",

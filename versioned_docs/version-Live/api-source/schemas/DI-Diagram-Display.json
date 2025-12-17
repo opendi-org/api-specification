@@ -1,0 +1,577 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/DI-Diagram-Display.json",
+    "title": "DI Diagram Display",
+    "description": "(DRAFT) -- Library of display components for use in a Causal Decision Diagram, for OpenDI-compliant software.",
+    "oneOf": [
+        {
+            "title": "Display: Point",
+            "description": "Holds a position/point in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "point"
+                },
+                "content": {
+                    "title": "Point Contents",
+                    "description": "Holds properties specific to a Point.",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Line",
+            "description": "Holds data for a line element in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "line"
+                },
+                "content": {
+                    "title": "Line Contents",
+                    "description": "Holds properties specific to a Text Element",
+                    "type": "object",
+                    "properties": {
+                        "vertices": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "x": {"type": "number", "default": 0},
+                                    "y": {"type": "number", "default": 0}
+                                }
+                            }
+                        }
+                    },
+                    "required": ["vertices"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Box",
+            "description": "Holds data for a box in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "box"
+                },
+                "content": {
+                    "title": "Box Contents",
+                    "description": "Holds properties specific to a Box",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "boundingBoxSize": {
+                            "type": "object",
+                            "properties": {
+                                "width": {"type": "number", "default": 100},
+                                "height": {"type": "number", "default": 100}
+                            },
+                            "required": ["width", "height"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["boundingBoxSize"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Ellipse",
+            "description": "Holds data for an ellipse in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "ellipse"
+                },
+                "content": {
+                    "title": "Ellipse Contents",
+                    "description": "Holds properties specific to an Ellipse",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "xRadius": { "type": "number", "default": 10 },
+                        "yRadius": { "type": "number", "default": 10 }
+                    },
+                    "required": ["xRadius", "yRadius"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Display: Text",
+            "description": "Holds data for a text element in a CDD.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "text"
+                },
+                "content": {
+                    "title": "Text Contents",
+                    "description": "Holds properties specific to a Text Display",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "boundingBoxSize": {
+                            "type": "object",
+                            "properties": {
+                                "width": {"type": "number", "default": 100},
+                                "height": {"type": "number", "default": 100}
+                            },
+                            "required": ["width", "height"],
+                            "additionalProperties": false
+                        },
+                        "text": { "type": "string", "default": "" },
+                        "font": {
+                            "type": "object",
+                            "properties": {
+                                "MIMEType": {"type": "string", "default": "font/otf"},
+                                "base64String": {"type": "string"}
+                            },
+                            "required": ["MIMEType", "base64String"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["text"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Custom Display",
+            "description": "Holds data for a custom graphical element in a CDD. Data stored in this type of element is not standardized.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "type": "string",
+                    "pattern": "^CUSTOM_.*"
+                },
+                "content": {
+                    "title": "Custom Display Contents",
+                    "description": "Holds properties for this custom Display. Data stored here is not standardized."
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Range",
+            "description": "Holds data and configuration for a controllable numeric range. Ranges have a min, max, and step size, and can be represented by gauges, sliders, etc.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlRange"
+                },
+                "content": {
+                    "title": "Range Control Contents",
+                    "description": "Holds properties specific to a Controllable Range Display",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "min": {"type": "number", "default": 0},
+                                "max": {"type": "number", "default": 100},
+                                "step": {"type": "number", "default": 1},
+                                "value": {"type": "number", "default": -1},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["min", "max", "step", "value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Text",
+            "description": "Holds data and configuration for a controllable text input.",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlText"
+                },
+                "content": {
+                    "title": "Text Control Contents",
+                    "description": "Holds properties specific to a Controllable Text Display",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "value": {"type": "string", "default": ""},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Boolean",
+            "description": "Holds data and configuration for a controllable boolean input (generally a checkbox).",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlBoolean"
+                },
+                "content": {
+                    "title": "Boolean Control Contents",
+                    "description": "Holds properties specific to a Controllable Boolean Display",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "value": {"type": "boolean", "default": false},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["value", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Control: Selector",
+            "description": "Holds properties specific to a Controllable Selector Display",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "controlSelector"
+                },
+                "content": {
+                    "title": "Selector Control Contents",
+                    "description": "Holds properties specific to a Controllable Selector Display",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "controlParameters": {
+                            "type": "object",
+                            "properties": {
+                                "options": {"type": "array", "items": true, "minItems": 1},
+                                "selectedValue": {"default": 0},
+                                "isInteractive": {"type": "boolean", "default": true}
+                            },
+                            "required": ["options", "selectedValue", "isInteractive"],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": ["controlParameters"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        },
+        {
+            "title": "Stacked Bar Chart",
+            "description": "Holds data and configuration for a dynamic bar chart",
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "title": "Asset Metadata",
+                    "description": "Metadata shared by all DI Assets",
+                    "$ref": "./DI-Asset.json"
+                },
+                "displayType": {
+                    "title": "Display Type",
+                    "description": "The type of display object. Determines what other properties the schema expects.",
+                    "const": "stackedBarChart"
+                },
+                "content": {
+                    "title": "Bar Chart Control Contents",
+                    "description": "Holds properties specific to a Stacked Bar Chart Display",
+                    "type": "object",
+                    "properties": {
+                        "relativePosition": {
+                            "title": "Relative Position",
+                            "description": "For environments that treat Diagram Elements as groups of arbitrarily-positioned Displays, this holds the offset position of this display, relative to the Diagram Element",
+                            "type": "object",
+                            "properties": {
+                                "x": {"type": "number", "default": 0},
+                                "y": {"type": "number", "default": 0}
+                            },
+                            "required": ["x", "y"],
+                            "additionalProperties": false
+                        },
+                        "data": {
+                            "type": "object",
+                            "description": "Data for the stacked bar chart, given as a list of labels for each bin on the x axis, and a list of data series.",
+                            "properties": {
+                                "xAxisLabels": {
+                                    "type": "array",
+                                    "items": {"type": "string"}
+                                },
+                                "series": {
+                                    "title": "Data Series",
+                                    "description": "List of data series for the chart. Each series has a list of values comprising one 'layer' of each bar on the chart, along with a title and color for that 'layer'. The length of values[] MUST match the length of xAxisLabels[].",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {"type": "string"},
+                                            "values": {
+                                                "type": "array",
+                                                "items": {"type": "number"}
+                                            },
+                                            "color": {"type": "string"}
+                                        },
+                                        "required": ["title", "values"],
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "required": ["xAxisLabels"],
+                            "additionalProperties": false
+                        },
+                        "minY": {"type": "number"},
+                        "maxY": {"type": "number"},
+                        "stepHeight": {"type": "number"}
+                    },
+                    "required": ["data", "minY", "maxY"],
+                    "additionalProperties": false
+                },
+                "addons": {
+                    "title": "Addon Data",
+                    "description": "Object containing data for various addons.",
+                    "$ref": "./DI-Addons.json"
+                }
+            },
+            "required": ["meta", "displayType", "content"],
+            "additionalProperties": false
+        }
+    ]
+}

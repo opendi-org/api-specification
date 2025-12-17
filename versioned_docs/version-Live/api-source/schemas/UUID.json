@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "DI-Asset-v0.0-alpha-0824",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/UUID.json",
     "title": "UUID",
     "$comment": "Ensures UUID validation is consistent.",
     "type": "string",
