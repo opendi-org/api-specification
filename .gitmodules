@@ -1,4 +1,4 @@
 [submodule "docs/api-source/schemas"]
 	path = docs/api-source/schemas
-	url = git@github.com/cdm-json-schema.git
+	url = git@github.com:opendi-org/cdm-json-schema.git
 	branch = dev-sourceonly
