@@ -68,14 +68,14 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/get-several-evaluatable-components",
-          label: "Get several evaluatable components",
+          id: "api/get-several-runnable-model-components",
+          label: "Get several runnable model components",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "api/retrieve-an-evaluatable-component",
-          label: "Retrieve an evaluatable component",
+          id: "api/retrieve-a-runnable-model-component",
+          label: "Retrieve a runnable model component",
           className: "api-method get",
         },
         {

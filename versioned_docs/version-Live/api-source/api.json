@@ -18,7 +18,7 @@
     },
     {
       "name": "components",
-      "description": "Endpoints for diagram and evaluatable components used in Causal Decision Models. Components include [Diagrams](./retrieve-a-diagram-component) and [Evaluatables](./retrieve-an-evaluatable-component).\n\n## Roles\n\nEndpoints for CDM components are relevant for software targeting many common DI roles, some of which are listed below.\n\n- [Decision Model Builders](http://opendi.org/roles-user-stories/Roles/Decision%20Model%20Builder/) may use these endpoints to share model components that they have authored.\n- [Decision Asset Managers](http://opendi.org/roles-user-stories/Roles/Decision%20Asset%20Manager/) may use these endpoints to provide access to curated libraries of CDM components and other DI Assets.",
+      "description": "Endpoints for model diagram and runnable model components used in Causal Decision Models. Components include [Diagrams](./retrieve-a-diagram-component) and [Runnable Models](./retrieve-a-runnable-model-component).\n\n## Roles\n\nEndpoints for CDM components are relevant for software targeting many common DI roles, some of which are listed below.\n\n- [Decision Model Builders](http://opendi.org/roles-user-stories/Roles/Decision%20Model%20Builder/) may use these endpoints to share model components that they have authored.\n- [Decision Asset Managers](http://opendi.org/roles-user-stories/Roles/Decision%20Asset%20Manager/) may use these endpoints to provide access to curated libraries of CDM components and other DI Assets.",
       "x-displayName": "Model Components"
     },
     {
@@ -153,7 +153,7 @@
       "get": {
           "tags": ["models"],
           "summary": "Get a model (reduced)",
-          "description": "Find a model by its UUID. Returns a reduced model JSON, with evaluatables and diagrams given as a list of IDs.\n\nFor evaluatable and diagram retrieval, see:  \n- [/evaluatables/{evaluatableId}](api/retrieve-an-evaluatable-component.api.mdx)\n- [/diagrams/{diagramId}](api/retrieve-a-diagram-component.api.mdx)",
+          "description": "Find a model by its UUID. Returns a reduced model JSON, with runnable models and diagrams given as a list of IDs.\n\nFor runnable model and diagram retrieval, see:  \n- [/runnables/{runnableId}](api/retrieve-a-runnable-model-component.api.mdx)\n- [/diagrams/{diagramId}](api/retrieve-a-diagram-component.api.mdx)",
           "parameters": [
               {
                   "name": "modelId",
@@ -204,7 +204,7 @@
       "get": {
         "tags": ["models"],
         "summary": "Get a model (complete)",
-        "description": "Find a model by its UUID. Returns the complete model JSON, including all evaluatables and diagrams.",
+        "description": "Find a model by its UUID. Returns the complete model JSON, including all runnable models and diagrams.",
         "parameters": [
           {
             "name": "modelId",
@@ -234,7 +234,7 @@
       "get": {
         "tags": ["components"],
         "summary": "Get several components",
-        "description": "Get a list of model components (diagram and evaluatable) the user has permission to access.\n\nResults include all types of components, marked with a `componentType` field:\n\n- `diagram`: See [Retrieve a Diagram](./retrieve-a-diagram-component)\n- `evaluatable`: See [Retrieve an evaluatable](./retrieve-an-evaluatable-component)\n\n**NOTE: This proposed endpoint is an aggregate collection, returning a list of instances from multiple resource types.**  \nWe're not yet sure if this is a good idea! If you have thoughts or feedback about common functionality that would justify this sort of aggregate collection, talk to us about it!\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "description": "Get a list of model components (diagrams and runnable models) the user has permission to access.\n\nResults include all types of components, marked with a `componentType` field:\n\n- `diagram`: See [Retrieve a Diagram](./retrieve-a-diagram-component)\n- `runnable`: See [Retrieve a runnable model](./retrieve-a-runnable-model-component)\n\n**NOTE: This proposed endpoint is an aggregate collection, returning a list of instances from multiple resource types.**  \nWe're not yet sure if this is a good idea! If you have thoughts or feedback about common functionality that would justify this sort of aggregate collection, talk to us about it!\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
         "parameters": [],
         "responses": {
           "200": {
@@ -247,7 +247,7 @@
                     "type": "object",
                     "properties": {
                       "componentType": {
-                        "enum": ["evaluatable", "diagram"]
+                        "enum": ["runnable", "diagram"]
                       },
                       "uuid": {
                         "$ref": "./schemas/UUID.json"
@@ -258,11 +258,11 @@
                   "example": [
                     {
                       "uuid": "d74bacf2-3867-42c0-8937-db434be33c68",
-                      "componentType": "evaluatable"
+                      "componentType": "runnable"
                     },
                     {
                       "uuid": "81ca85d3-1621-498f-a74a-0957531e7330",
-                      "componentType": "evaluatable"
+                      "componentType": "runnable"
                     },
                     {
                       "uuid": "a4c785cb-bb11-4c0e-9f05-38aef4288229",
@@ -270,7 +270,7 @@
                     },
                     {
                       "uuid": "8d8e3795-d969-4f8e-ad42-8de12909acce",
-                      "componentType": "evaluatable"
+                      "componentType": "runnable"
                     }
                   ]
                 }
@@ -280,11 +280,11 @@
         }
       }
     },
-    "/evaluatables": {
+    "/runnnables": {
       "get": {
         "tags": ["components"],
-        "summary": "Get several evaluatable components",
-        "description": "Get a list of all evaluatable model components the user has permission to access.\n\nEvaluatable components are used in [Models](api/models.tag.mdx).\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
+        "summary": "Get several runnable model components",
+        "description": "Get a list of all runnable model components the user has permission to access.\n\nRunnable model components are used in [Models](api/models.tag.mdx).\n\n### TODO:\n\n- Allow filter parameters.\n- Add query/response parameters for pagination.",
         "parameters": [],
         "responses": {
           "200": {
@@ -301,16 +301,16 @@
         }
       }
     },
-    "/evaluatables/{evaluatableId}": {
+    "/runnables/{runnableId}": {
       "get": {
         "tags": ["components"],
-        "summary": "Retrieve an evaluatable component",
-        "description": "Find an evaluatable component by its UUID. Returns the complete component JSON.\n\nEvaluatable components are used in [Models](api/models.tag.mdx).",
+        "summary": "Retrieve a runnable model component",
+        "description": "Find a runnable model component by its UUID. Returns the complete component JSON.\n\nRunnable model components are used in [Models](api/models.tag.mdx).",
         "parameters": [
           {
-            "name": "evaluatableId",
+            "name": "runnableId",
             "in": "path",
-            "description": "UUID of evaluatable component to retrieve",
+            "description": "UUID of runnable model component to retrieve",
             "required": true,
             "schema": {
                 "$ref": "./schemas/UUID.json"
@@ -323,7 +323,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./schemas/DI-Evaluatable.json"
+                  "$ref": "./schemas/DI-Runnable-Model.json"
                 }
               }
             }

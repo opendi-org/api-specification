@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "ODI-Addon-v0.0-alpha-0824",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/DI-Addons.json",
     "title": "DI Addons Object",
     "description": "(DRAFT) -- This object holds extension/addon objects to be embedded in the CDM JSON.",
     "type": "object",

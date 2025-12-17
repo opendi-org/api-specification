@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "ODI-Dia-v0.0-alpha-0824",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/DI-Diagram.json",
     "title": "DI Diagram",
     "description": "(DRAFT) -- Represents a diagram component of a Causal Decision Model for OpenDI-compliant software.",
     "properties": {
@@ -14,32 +14,32 @@
             "items": {
                 "title": "Diagram Element",
                 "description": "An element in a diagram associated with a CDM.",
-                "oneOf": [
-                    {
-                        "$ref": "#/$defs/diagramPoint"
-                    },
-                    {
-                        "$ref": "#/$defs/diagramLine"
-                    },
-                    {
-                        "$ref": "#/$defs/diagramBox"
-                    },
-                    {
-                        "$ref": "#/$defs/diagramEllipse"
-                    },
-                    {
-                        "$ref": "#/$defs/diagramText"
-                    },
-                    {
-                        "$ref": "#/$defs/customElement"
-                    }
-                ]
+                "$ref": "DI-Diagram-Element.json"
             }
         },
         "dependencies": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/dependency"
+                "title": "Causal Dependency",
+                "description": "Holds references (by UUID) to a directed causal link between two decision elements.",
+                "properties": {
+                    "meta": {
+                        "title": "Asset Metadata",
+                        "description": "Metadata shared by all DI Assets",
+                        "$ref": "./DI-Asset.json"
+                    },
+                    "source": {
+                        "title": "Source Element",
+                        "description": "UUID of the source element.",
+                        "$ref": "./UUID.json"
+                    },
+                    "target": {
+                        "title": "Target Element",
+                        "description": "UUID of the target element.",
+                        "$ref": "./UUID.json"
+                    }
+                },
+                "required": ["meta", "source", "target"]
             }
         },
         "addons": {
@@ -49,312 +49,5 @@
         }
     },
     "required": ["meta"],
-    "additionalProperties": false,
-
-    "$defs": {
-        "diagramPoint": {
-            "title": "Diagram Point",
-            "description": "Holds a position/point in a CDD.",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "causalType": {
-                    "$ref": "./Causal-Type.json"
-                },
-                "diaType": {
-                    "title": "Diagram Type",
-                    "description": "The type of diagram object. Determines what other properties the schema expects.",
-                    "const": "point"
-                },
-                "content": {
-                    "title": "Point Contents",
-                    "description": "Holds properties specific to a Point.",
-                    "type": "object",
-                    "properties": {
-                        "position": {
-                            "type": "object",
-                            "properties": {
-                                "x": {"type": "number", "default": 0},
-                                "y": {"type": "number", "default": 0}
-                            },
-                            "required": ["x", "y"],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": ["position"],
-                    "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
-                }
-            },
-            "required": ["meta", "causalType", "diaType", "content"],
-            "additionalProperties": false
-        },
-        "diagramLine": {
-            "title": "Diagram Line",
-            "description": "Holds data for a line element in a CDD.",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "causalType": {
-                    "$ref": "./Causal-Type.json"
-                },
-                "diaType": {
-                    "title": "Diagram Type",
-                    "description": "The type of diagram object. Determines what other properties the schema expects.",
-                    "const": "line"
-                },
-                "content": {
-                    "title": "Line Contents",
-                    "description": "Holds properties specific to a Text Element",
-                    "type": "object",
-                    "properties": {
-                        "vertices": {
-                            "type": "array",
-                            "items": {
-                                "properties": {
-                                    "x": {"type": "number", "default": 0},
-                                    "y": {"type": "number", "default": 0}
-                                }
-                            }
-                        }
-                    },
-                    "required": ["vertices"],
-                    "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
-                }
-            },
-            "required": ["meta", "causalType", "diaType", "content"],
-            "additionalProperties": false
-        },
-        "diagramBox": {
-            "title": "Diagram Box",
-            "description": "Holds data for a box in a CDD.",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "causalType": {
-                    "$ref": "./Causal-Type.json"
-                },
-                "diaType": {
-                    "title": "Diagram Type",
-                    "description": "The type of diagram object. Determines what other properties the schema expects.",
-                    "const": "box"
-                },
-                "content": {
-                    "title": "Box Contents",
-                    "description": "Holds properties specific to a Box",
-                    "type": "object",
-                    "properties": {
-                        "position": {
-                            "type": "object",
-                            "properties": {
-                                "x": {"type": "number", "default": 0},
-                                "y": {"type": "number", "default": 0}
-                            },
-                            "required": ["x", "y"],
-                            "additionalProperties": false
-                        },
-                        "boundingBoxSize": {
-                            "type": "object",
-                            "properties": {
-                                "width": {"type": "number", "default": 100},
-                                "height": {"type": "number", "default": 100}
-                            },
-                            "required": ["width", "height"],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": ["position", "boundingBoxSize"],
-                    "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
-                }
-            },
-            "required": ["meta", "causalType", "diaType", "content"],
-            "additionalProperties": false
-        },
-        "diagramEllipse": {
-            "title": "Diagram Ellipse",
-            "description": "Holds data for an ellipse in a CDD.",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "causalType": {
-                    "$ref": "./Causal-Type.json"
-                },
-                "diaType": {
-                    "title": "Diagram Type",
-                    "description": "The type of diagram object. Determines what other properties the schema expects.",
-                    "const": "ellipse"
-                },
-                "content": {
-                    "title": "Ellipse Contents",
-                    "description": "Holds properties specific to an Ellipse",
-                    "type": "object",
-                    "properties": {
-                        "position": {
-                            "type": "object",
-                            "properties": {
-                                "x": {"type": "number", "default": 0},
-                                "y": {"type": "number", "default": 0}
-                            },
-                            "required": ["x", "y"],
-                            "additionalProperties": false
-                        },
-                        "xRadius": { "type": "number", "default": 10 },
-                        "yRadius": { "type": "number", "default": 10 }
-                    },
-                    "required": ["position", "xRadius", "yRadius"],
-                    "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
-                }
-            },
-            "required": ["meta", "causalType", "diaType", "content"],
-            "additionalProperties": false
-        },
-        "diagramText": {
-            "title": "Diagram Text",
-            "description": "Holds data for a text element in a CDD.",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "causalType": {
-                    "$ref": "./Causal-Type.json"
-                },
-                "diaType": {
-                    "title": "Diagram Type",
-                    "description": "The type of diagram object. Determines what other properties the schema expects.",
-                    "const": "text"
-                },
-                "content": {
-                    "title": "Text Contents",
-                    "description": "Holds properties specific to a Text Element",
-                    "type": "object",
-                    "properties": {
-                        "position": {
-                            "type": "object",
-                            "properties": {
-                                "x": {"type": "number", "default": 0},
-                                "y": {"type": "number", "default": 0}
-                            },
-                            "required": ["x", "y"],
-                            "additionalProperties": false
-                        },
-                        "boundingBoxSize": {
-                            "type": "object",
-                            "properties": {
-                                "width": {"type": "number", "default": 100},
-                                "height": {"type": "number", "default": 100}
-                            },
-                            "required": ["width", "height"],
-                            "additionalProperties": false
-                        },
-                        "text": { "type": "string", "default": "" },
-                        "font": {
-                            "MIMEType": {"type": "string", "default": "font/otf"},
-                            "base64String": {"type": "string"}
-                        }
-                    },
-                    "required": ["position", "text"],
-                    "additionalProperties": false
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
-                }
-            },
-            "required": ["meta", "causalType", "diaType", "content"],
-            "additionalProperties": false
-        },
-        "customElement": {
-            "title": "Custom Element",
-            "description": "Holds data for a custom graphical element in a CDD. Data stored in this type of element is not standardized.",
-            "type": "object",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "causalType": {
-                    "$ref": "./Causal-Type.json"
-                },
-                "diaType": {
-                    "title": "Diagram Type",
-                    "description": "The type of diagram object. Determines what other properties the schema expects.",
-                    "type": "string",
-                    "pattern": "^CUSTOM_.*"
-                },
-                "content": {
-                    "title": "Custom Diagram Element Contents",
-                    "description": "Holds properties for this custom diagram element. Data stored here is not standardized."
-                },
-                "associatedEvalElements": {
-                    "$ref": "#/$defs/associatedEvalElements"
-                }
-            },
-            "required": ["meta", "causalType", "diaType", "content"],
-            "additionalProperties": false
-        },
-        "$comment": "Other types of graphical elements TBD",
-
-        "dependency": {
-            "title": "Causal Dependency",
-            "description": "Holds references (by UUID) to a directed causal link between two decision elements.",
-            "properties": {
-                "meta": {
-                    "title": "Asset Metadata",
-                    "description": "Metadata shared by all DI Assets",
-                    "$ref": "./DI-Asset.json"
-                },
-                "source": {
-                    "title": "Source Element",
-                    "description": "UUID of the source element.",
-                    "$ref": "./UUID.json"
-                },
-                "target": {
-                    "title": "Target Element",
-                    "description": "UUID of the target element.",
-                    "$ref": "./UUID.json"
-                }
-            },
-            "required": ["meta", "source", "target"]
-        },
-
-
-        "associatedEvalElements": {
-            "title": "Associated Evaluatable Elements",
-            "description": "List of evaluatable elements associated with this diagram element.",
-            "type": "array",
-            "items": {
-                "$ref": "./UUID.json"
-            }
-        }
-    }
+    "additionalProperties": false
 }

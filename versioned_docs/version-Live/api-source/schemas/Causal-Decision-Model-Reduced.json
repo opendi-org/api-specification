@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "ODI-CDM-v0.0-alpha-0824",
+    "$id": "https://opendi.org/json-schema/v0-draft-0325/Causal-Decision-Model-Reduced.json",
     "title": "Causal Decision Model",
     "description": "(DRAFT) -- Represents a Causal Decision Model for OpenDI-compliant software.",
     "properties": {
@@ -14,17 +14,41 @@
             "description": "Metadata shared by all DI Assets",
             "$ref": "./DI-Asset.json"
         },
-        "evaluatables": {
-            "title": "Evaluatable Decision Models",
-            "description": "List of UUIDs identifying the evaluatable model (or set of model components) used for computing or simulating this CDM.",
+        "runnableModels": {
+            "title": "Runnable Decision Models List",
+            "description": "List of UUIDs identifying the runnable model (or set of model components) used for computing or simulating this CDM.",
             "type": "array",
             "items": {
                 "$ref": "./UUID.json"
             }
         },
         "diagrams": {
-            "title": "Model Diagram List",
+            "title": "Model Diagrams List",
             "description": "List of UUIDs identifying the diagrams (likely Causal Decision Diagrams) associated with this model.",
+            "type": "array",
+            "items": {
+                "$ref": "./UUID.json"
+            }
+        },
+        "evaluatableAssets": {
+            "title": "Evaluatable Assets List",
+            "description": "List of UUIDs identifying the Evaluatable Assets attached to this model. May be used by one or more Runnable Models.",
+            "type": "array",
+            "items": {
+                "$ref": "./UUID.json"
+            }
+        },
+        "inputOutputValues": {
+            "title": "Input/Output Values List",
+            "description": "List of UUIDs identifying all Input/Output values used by Runnable Models in this CDM. I/O Values can be read or set by Runnable Models, and interactively in Diagrams, via Controls. A single I/O Value can be referenced in multiple Runnable Models and Controls.",
+            "type": "array",
+            "items": {
+                "$ref": "./UUID.json"
+            }
+        },
+        "controls": {
+            "title": "Controls List",
+            "description": "List of UUIDs identifying all DI Controls for this model. Controls connect I/O values to Diagram Elements, allowing values to be set or displayed.",
             "type": "array",
             "items": {
                 "$ref": "./UUID.json"
