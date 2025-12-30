@@ -224,15 +224,15 @@ const config = {
               },
               {
                 label: 'Roles and User Stories',
-                href: 'http://opendi.org/roles-user-stories'
+                href: 'https://opendi-org.github.io/roles-user-stories/'
               },
               {
                 label: 'API Specification',
-                href: 'http://opendi.org/api-specification'
+                href: 'https://opendi-org.github.io/api-specification/'
               },
               {
                 label: 'CDM Authoring Tool',
-                href: 'http://opendi.org/cdd-authoring-tool'
+                href: 'https://opendi-org.github.io/cdd-authoring-tool/'
               },
             ],
           },
